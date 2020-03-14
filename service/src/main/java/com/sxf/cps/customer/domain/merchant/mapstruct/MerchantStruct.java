@@ -64,7 +64,7 @@ public interface MerchantStruct {
     @Mapping(target = "uuid", ignore = true)
     void updateMerchantBrandEntity(CreateMerchantBrandEvent event, @MappingTarget MerchantBrandEntity entity);
 
-    public static void main(String[] args) {
+    static void main(String[] args) {
         MerchantStruct mapper = Mappers.getMapper(MerchantStruct.class);
         CreateMerchantEvent event = new CreateMerchantEvent();
         MerchantEntity entity = new MerchantEntity();
@@ -75,7 +75,6 @@ public interface MerchantStruct {
         event.setUuid("event");
         System.out.println(entity);
         mapper.updateMerchantEntity(event, entity);
-
         System.out.println(entity);
 
     }

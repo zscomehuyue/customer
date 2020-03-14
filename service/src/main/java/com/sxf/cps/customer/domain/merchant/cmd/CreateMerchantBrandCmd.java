@@ -1,9 +1,9 @@
 package com.sxf.cps.customer.domain.merchant.cmd;
 
-import com.sxf.cps.customer.domain.merchant.enumtype.BrandEnum;
-import com.sxf.cps.customer.domain.merchant.enumtype.BrandFlagEnum;
-import com.sxf.cps.customer.domain.merchant.enumtype.FactStateEnum;
-import com.sxf.cps.customer.domain.merchant.enumtype.FactStatusEnum;
+import com.sxf.cps.customer.api.merchant.enumtype.BrandEnum;
+import com.sxf.cps.customer.api.merchant.enumtype.BrandFlagEnum;
+import com.sxf.cps.customer.api.merchant.enumtype.FactStateEnum;
+import com.sxf.cps.customer.api.merchant.enumtype.FactStatusEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

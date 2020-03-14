@@ -1,4 +1,4 @@
-package com.sxf.cps.customer.domain.merchant.enumtype;
+package com.sxf.cps.customer.api.merchant.enumtype;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

@@ -1,7 +1,7 @@
 package com.sxf.cps.customer.domain.merchant.cmd;
 
 
-import com.sxf.cps.customer.domain.merchant.enumtype.BrandEnum;
+import com.sxf.cps.customer.api.merchant.enumtype.BrandEnum;
 import com.sxf.cps.customer.domain.merchant.event.CreateMerchantEvent;
 import com.sxf.cps.customer.domain.merchant.mapstruct.MerchantStruct;
 import lombok.Getter;
@@ -12,7 +12,6 @@ import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.spring.stereotype.Aggregate;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.Resource;
 import java.sql.Timestamp;

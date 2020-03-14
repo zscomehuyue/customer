@@ -1,6 +1,6 @@
 package com.sxf.cps.customer.domain.merchant.entity;
 
-import com.sxf.cps.customer.domain.merchant.enumtype.BrandEnum;
+import com.sxf.cps.customer.api.merchant.enumtype.BrandEnum;
 import lombok.ToString;
 
 import javax.persistence.*;

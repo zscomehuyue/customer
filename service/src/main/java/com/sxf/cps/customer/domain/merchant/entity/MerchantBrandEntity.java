@@ -1,9 +1,10 @@
 package com.sxf.cps.customer.domain.merchant.entity;
 
-import com.sxf.cps.customer.domain.merchant.enumtype.BrandEnum;
-import com.sxf.cps.customer.domain.merchant.enumtype.BrandFlagEnum;
-import com.sxf.cps.customer.domain.merchant.enumtype.FactStateEnum;
-import com.sxf.cps.customer.domain.merchant.enumtype.FactStatusEnum;
+
+import com.sxf.cps.customer.api.merchant.enumtype.BrandEnum;
+import com.sxf.cps.customer.api.merchant.enumtype.BrandFlagEnum;
+import com.sxf.cps.customer.api.merchant.enumtype.FactStateEnum;
+import com.sxf.cps.customer.api.merchant.enumtype.FactStatusEnum;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
