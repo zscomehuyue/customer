@@ -66,7 +66,6 @@ public class MerchantService {
 
 
     public Page<MerchantDto> getMerchantPage(MerchantForm form) {
-
         ExampleMatcher matcher = ExampleMatcher.matching()
                 .withMatcher(FiledHelper.field(MerchantForm::getMobile), ExampleMatcher.GenericPropertyMatchers.startsWith())
                 .withMatcher(FiledHelper.field(MerchantForm::getName), ExampleMatcher.GenericPropertyMatchers.contains());
@@ -76,6 +75,7 @@ public class MerchantService {
     }
 
     public static void main(String[] args) {
+        //FIXME ExampleMatchers fn 功能
         ExampleMatcher matcher = ExampleMatcher.matching();
         matcher = ExampleMatchers.withMatcher(MerchantForm::getMobile, ExampleMatcher.GenericPropertyMatchers.startsWith(), matcher);
         matcher = ExampleMatchers.withMatcher(MerchantForm::getName, ExampleMatcher.GenericPropertyMatchers.startsWith(), matcher);
