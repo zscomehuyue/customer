@@ -4,6 +4,7 @@ package com.sxf.cps.customer.domain.merchant.cmd;
 import com.sxf.cps.customer.domain.merchant.enumtype.BrandEnum;
 import com.sxf.cps.customer.domain.merchant.event.CreateMerchantEvent;
 import com.sxf.cps.customer.domain.merchant.mapstruct.MerchantStruct;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -31,6 +32,7 @@ import static org.axonframework.modelling.command.AggregateLifecycle.apply;
  */
 @Aggregate
 @Setter
+@Getter
 @Accessors(chain = true)
 @NoArgsConstructor
 public class Merchant {
