@@ -1,4 +1,4 @@
-package com.sxf.cps.customer;
+package com.sxf.cps.customer.infrastructure.util;
 
 import javax.transaction.Transactional;
 import java.lang.annotation.*;

@@ -16,6 +16,7 @@ import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.spring.stereotype.Aggregate;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.annotation.Resource;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +53,7 @@ public class MerchantBrand {
     private List<RateCheckInLog> rateCheckInLogList;
 
 
-    @Autowired
+    @Resource
     private MerchantStruct merchantStruct;
 
     /**

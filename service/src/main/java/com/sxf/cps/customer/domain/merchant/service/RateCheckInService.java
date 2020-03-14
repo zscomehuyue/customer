@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -14,9 +15,9 @@ import java.util.Optional;
 @Slf4j
 @Service
 public class RateCheckInService {
-    @Autowired
+    @Resource
     private MerchantStruct merchantStruct;
-    @Autowired
+    @Resource
     private RateCheckInRepository rateCheckInRepository;
 
     public void mergeRateCheckIn(RateCheckInEntity entity) {

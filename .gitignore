@@ -24,8 +24,8 @@ out/
 /coverage
 
 # production
-/build
-/dist
+/build/
+/dist/
 
 # misc
 .DS_Store

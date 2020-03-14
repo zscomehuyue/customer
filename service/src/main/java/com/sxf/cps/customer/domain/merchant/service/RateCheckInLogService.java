@@ -7,15 +7,16 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 @Slf4j
 @Service
 public class RateCheckInLogService {
-    @Autowired
+    @Resource
     private MerchantStruct merchantStruct;
-    @Autowired
+    @Resource
     private RateCheckInLogRepository rateCheckInLogRepository;
 
 

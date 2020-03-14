@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -18,9 +19,9 @@ import java.util.function.Supplier;
 @Service
 public class MerchantService {
 
-    @Autowired
+    @Resource
     private MerchantStruct merchantStruct;
-    @Autowired
+    @Resource
     private MerchantRepository merchantRepository;
 
     public void mergeMerchantEntity(CreateMerchantEvent event, Supplier<Optional<MerchantBrandEntity>> brandFun) {

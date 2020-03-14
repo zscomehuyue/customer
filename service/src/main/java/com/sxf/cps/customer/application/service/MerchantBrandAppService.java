@@ -1,6 +1,6 @@
 package com.sxf.cps.customer.application.service;
 
-import com.sxf.cps.customer.DefaultTransaction;
+import com.sxf.cps.customer.infrastructure.util.DefaultTransaction;
 import com.sxf.cps.customer.domain.merchant.event.CreateMerchantBrandEvent;
 import com.sxf.cps.customer.domain.merchant.mapstruct.MerchantStruct;
 import com.sxf.cps.customer.domain.merchant.service.MerchantBrandService;
@@ -11,17 +11,19 @@ import org.axonframework.eventhandling.EventHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+
 @Slf4j
 @Service
 public class MerchantBrandAppService {
 
-    @Autowired
+    @Resource
     private MerchantStruct merchantStruct;
-    @Autowired
+    @Resource
     private RateCheckInService rateCheckInService;
-    @Autowired
+    @Resource
     private RateCheckInLogService rateCheckInLogService;
-    @Autowired
+    @Resource
     private MerchantBrandService merchantBrandService;
 
     @EventHandler

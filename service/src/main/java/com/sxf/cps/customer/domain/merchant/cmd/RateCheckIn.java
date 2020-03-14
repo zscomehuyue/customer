@@ -11,7 +11,6 @@ import java.util.Objects;
 
 @Getter
 @Setter
-@Aggregate
 @Accessors(chain = true)
 @NoArgsConstructor
 public class RateCheckIn {
