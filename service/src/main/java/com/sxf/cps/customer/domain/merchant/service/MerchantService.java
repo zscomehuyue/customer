@@ -87,7 +87,6 @@ public class MerchantService {
     }
 
 
-    @Test
     public void matcherTest(){
         ExampleMatcher matcher = ExampleMatchers.builder()
                 .withMatcher(MerchantForm::getMobile, ExampleMatcher.GenericPropertyMatchers.startsWith())
