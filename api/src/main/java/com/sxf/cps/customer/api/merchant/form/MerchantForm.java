@@ -13,4 +13,6 @@ public class MerchantForm {
     private String merchantCode;
     private String name;
     private String mobile;
+    private int page=1;
+    private int size=10;
 }
