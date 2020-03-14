@@ -8,7 +8,6 @@ import com.sxf.cps.customer.domain.merchant.event.CreateMerchantEvent;
 import com.sxf.cps.customer.domain.merchant.mapstruct.MerchantStruct;
 import com.sxf.cps.customer.domain.merchant.repository.MerchantRepository;
 import com.sxf.cps.customer.infrastructure.util.api.ExampleMatchers;
-import com.sxf.cps.customer.infrastructure.util.api.FiledHelper;
 import com.sxf.cps.customer.resources.assembler.MerchantAssembler;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Example;
@@ -65,25 +64,40 @@ public class MerchantService {
     }
 
 
+    /**
+     * 级联查询，并解决N+1问题；
+     *
+     * @param form
+     * @return
+     */
     public Page<MerchantDto> getMerchantPage(MerchantForm form) {
-        ExampleMatcher matcher = ExampleMatcher.matching()
-                .withMatcher(FiledHelper.field(MerchantForm::getMobile), ExampleMatcher.GenericPropertyMatchers.startsWith())
-                .withMatcher(FiledHelper.field(MerchantForm::getName), ExampleMatcher.GenericPropertyMatchers.contains());
+
+        //FIXME ExampleMatcher 既然解决了多线程问题，又解决了多次创建对象，数据存储问题；采用中间保存结果；
+        //FIXME 完美解决：ExampleMatcher扩展问题；
+        ExampleMatcher matcher = ExampleMatchers.builder()
+                .withMatcher(MerchantForm::getMobile, ExampleMatcher.GenericPropertyMatchers.startsWith())
+                .withMatcher(MerchantForm::getName, ExampleMatcher.GenericPropertyMatchers.startsWith())
+                .build();
+
         Example<MerchantEntity> example = Example.of(merchantAssembler.toMerchantEntity(form), matcher);
+
+        //FIXME Page 提供一个map方法很好，轻松解决映射问题；并且直接返回接需要的结果；有点中间拦截器的感觉，完美；
         return merchantRepository.findAll(example, PageRequest.of(form.getPage(), form.getSize()))
                 .map(merchantAssembler::toMerchantDto);
     }
 
-    public static void main(String[] args) {
-        //FIXME ExampleMatchers fn 功能
-        ExampleMatcher matcher = ExampleMatcher.matching();
-        matcher = ExampleMatchers.withMatcher(MerchantForm::getMobile, ExampleMatcher.GenericPropertyMatchers.startsWith(), matcher);
-        matcher = ExampleMatchers.withMatcher(MerchantForm::getName, ExampleMatcher.GenericPropertyMatchers.startsWith(), matcher);
 
+    @Test
+    public void matcherTest(){
+        ExampleMatcher matcher = ExampleMatchers.builder()
+                .withMatcher(MerchantForm::getMobile, ExampleMatcher.GenericPropertyMatchers.startsWith())
+                .withMatcher(MerchantForm::getName, ExampleMatcher.GenericPropertyMatchers.startsWith())
+                .build();
         System.out.println(matcher.getPropertySpecifiers().getSpecifiers().size());
 
         ExampleMatcher matcher2 = ExampleMatcher.matching()
-                .withMatcher("name", ExampleMatcher.GenericPropertyMatchers.startsWith());
+                .withMatcher("name", ExampleMatcher.GenericPropertyMatchers.startsWith())
+                .withMatcher("name2", ExampleMatcher.GenericPropertyMatchers.startsWith());
         System.out.println(matcher2.getPropertySpecifiers().getSpecifiers().size());
     }
 
