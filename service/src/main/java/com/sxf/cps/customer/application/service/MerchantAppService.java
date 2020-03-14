@@ -25,8 +25,6 @@ public class MerchantAppService {
     @EventHandler
     @DefaultTransaction
     public void mergeMerchant(CreateMerchantEvent event) {
-        merchantService.mergeMerchantEntity(event, () -> {
-            return merchantBrandService.getMerchantBrand(event.getFactSn(), event.getFactId());
-        });
+        merchantService.mergeMerchantEntity(event, () -> merchantBrandService.getMerchantBrand(event.getFactSn(), event.getFactId()));
     }
 }
