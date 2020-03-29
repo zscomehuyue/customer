@@ -4,9 +4,16 @@ import com.sxf.cps.customer.api.merchant.dto.MerchantDto;
 import com.sxf.cps.customer.api.merchant.form.MerchantForm;
 import com.sxf.cps.customer.domain.merchant.entity.MerchantBrandEntity;
 import com.sxf.cps.customer.domain.merchant.entity.MerchantEntity;
+import com.sxf.cps.customer.domain.merchant.entity.RateCheckInEntity;
+import com.sxf.cps.customer.domain.merchant.entity.RateCheckInLogEntity;
+import com.sxf.cps.customer.domain.merchant.event.CreateMerchantBrandEvent;
 import com.sxf.cps.customer.domain.merchant.event.CreateMerchantEvent;
 import com.sxf.cps.customer.domain.merchant.mapstruct.MerchantStruct;
+import com.sxf.cps.customer.domain.merchant.repository.MerchantBrandRepository;
 import com.sxf.cps.customer.domain.merchant.repository.MerchantRepository;
+import com.sxf.cps.customer.domain.merchant.repository.RateCheckInLogRepository;
+import com.sxf.cps.customer.domain.merchant.repository.RateCheckInRepository;
+import com.sxf.cps.customer.infrastructure.util.DefaultTransaction;
 import com.sxf.cps.customer.infrastructure.util.api.ExampleMatchers;
 import com.sxf.cps.customer.resources.assembler.MerchantAssembler;
 import lombok.extern.slf4j.Slf4j;
@@ -32,6 +39,19 @@ public class MerchantService {
     private MerchantRepository merchantRepository;
     @Resource
     private MerchantAssembler merchantAssembler;
+    @Resource
+    private MerchantBrandRepository merchantBrandRepository;
+    @Resource
+    private RateCheckInLogRepository rateCheckInLogRepository;
+    @Resource
+    private RateCheckInRepository rateCheckInRepository;
+
+
+    @EventHandler
+    @DefaultTransaction
+    public void mergeMerchant(CreateMerchantEvent event) {
+        mergeMerchantEntity(event, () ->getMerchantBrand(event.getFactSn(), event.getFactId()));
+    }
 
     public void mergeMerchantEntity(CreateMerchantEvent event, Supplier<Optional<MerchantBrandEntity>> brandFun) {
         Optional<MerchantEntity> merchant = merchantRepository.findByMerchantCode(event.getMerchantCode());
@@ -99,5 +119,64 @@ public class MerchantService {
                 .withMatcher("name2", ExampleMatcher.GenericPropertyMatchers.startsWith());
         System.out.println(matcher2.getPropertySpecifiers().getSpecifiers().size());
     }
+
+
+    public Optional<MerchantBrandEntity> getMerchantBrand(String factSn, String factId) {
+        return merchantBrandRepository.findByFactSnAndFactId(factSn, factId);
+    }
+
+    @EventHandler
+    @DefaultTransaction
+    public void mergeMerchantBrand(CreateMerchantBrandEvent event) {
+        mergeMerchantBrandEntity(event, () -> {
+            mergeRateCheckIn(merchantStruct.toRateCheckInEntity(event));
+            saveRateCheckInLogEntity(merchantStruct.toRateCheckInLogEntity(event));
+            return null;
+        });
+    }
+
+
+    private void mergeRateCheckIn(RateCheckInEntity entity) {
+        Optional<RateCheckInEntity> rate = rateCheckInRepository.findByFactSnAndFactId(entity.getFactSn(), entity.getFactId());
+        rate.ifPresent(r -> {
+            merchantStruct.updateRateCheckInEntity(entity, r);
+            r.setModified(Timestamp.valueOf(LocalDateTime.now()));
+            rateCheckInRepository.flush();
+            log.info("=mergeRateCheckIn=>update entity:{}", entity);
+        });
+        rate.orElseGet(() -> {
+            entity.setCreated(Timestamp.valueOf(LocalDateTime.now()));
+            entity.setModified(Timestamp.valueOf(LocalDateTime.now()));
+            rateCheckInRepository.save(entity);
+            log.info("=mergeRateCheckIn=>save entity:{}", entity);
+            return null;
+        });
+    }
+
+    private void saveRateCheckInLogEntity(RateCheckInLogEntity entity) {
+        entity.setCreated(Timestamp.valueOf(LocalDateTime.now()));
+        entity.setModified(Timestamp.valueOf(LocalDateTime.now()));
+        rateCheckInLogRepository.save(entity);
+    }
+
+    private void mergeMerchantBrandEntity(CreateMerchantBrandEvent event, Supplier<String> afterMergeBrand) {
+        Optional<MerchantBrandEntity> brand = merchantBrandRepository.findByFactSnAndFactId(event.getFactSn(), event.getFactId());
+        brand.ifPresent(b -> {
+            merchantStruct.updateMerchantBrandEntity(event, b);
+            b.setModified(Timestamp.valueOf(LocalDateTime.now()));
+            merchantBrandRepository.flush();
+            log.info("=mergeMerchantBrandEntity=>update event:{}", event);
+        });
+        brand.orElseGet(() -> {
+            MerchantBrandEntity entity = merchantStruct.toMerchantBrandEntity(event);
+            entity.setCreated(Timestamp.valueOf(LocalDateTime.now()));
+            entity.setModified(Timestamp.valueOf(LocalDateTime.now()));
+            merchantBrandRepository.save(entity);
+            log.info("=mergeMerchantBrandEntity=>save event:{}", event);
+            return null;
+        });
+        afterMergeBrand.get();
+    }
+
 
 }
