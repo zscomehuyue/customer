@@ -51,10 +51,10 @@ public class MerchantService {
     @EventHandler
     @DefaultTransaction
     public void mergeMerchant(CreateMerchantEvent event) {
-        mergeMerchantEntity(event, () ->getMerchantBrand(event.getFactSn(), event.getFactId()));
+        mergeMerchantEntity(event, () -> getMerchantBrand(event.getFactSn(), event.getFactId()));
     }
 
-    public void mergeMerchantEntity(CreateMerchantEvent event, Supplier<Optional<MerchantBrandEntity>> brandFun) {
+    private void mergeMerchantEntity(CreateMerchantEvent event, Supplier<Optional<MerchantBrandEntity>> brandFun) {
         Optional<MerchantEntity> merchant = merchantRepository.findByMerchantCode(event.getMerchantCode());
         merchant.ifPresent(b -> {
             log.info("=mergeMerchantEntity=>update:{}", event);
@@ -108,7 +108,7 @@ public class MerchantService {
     }
 
 
-    public void matcherTest(){
+    public void matcherTest() {
         ExampleMatcher matcher = ExampleMatchers.builder()
                 .withMatcher(MerchantForm::getMobile, ExampleMatcher.GenericPropertyMatchers.startsWith())
                 .withMatcher(MerchantForm::getName, ExampleMatcher.GenericPropertyMatchers.startsWith())
