@@ -17,6 +17,7 @@ import com.sxf.cps.customer.infrastructure.util.DefaultTransaction;
 import com.sxf.cps.customer.infrastructure.util.api.ExampleMatchers;
 import com.sxf.cps.customer.resources.assembler.MerchantAssembler;
 import lombok.extern.slf4j.Slf4j;
+import org.axonframework.eventhandling.EventHandler;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Page;
@@ -70,8 +71,8 @@ public class MerchantService {
             MerchantEntity save = merchantRepository.save(entity);
             Optional<MerchantBrandEntity> brand = brandFun.get();
             brand.ifPresent(bd -> {
-                bd.setMerchantCode(event.getMerchantCode());
-                bd.setMerchantId(save.getUuid());
+                bd.getMerchantVo().setMerchantCode(event.getMerchantCode());
+                bd.getMerchantVo().setMerchantId(save.getUuid());
                 bd.setModified(Timestamp.valueOf(LocalDateTime.now()));
                 merchantRepository.flush();
             });
