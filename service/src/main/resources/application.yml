@@ -1,13 +1,17 @@
+server:
+  port: ${port:8080}
+
 spring:
   application:
     name: customer
 
-
+#datasource config
   datasource:
-    url: jdbc:mysql://db:3306/axonbank
+    url: jdbc:mysql://127.0.0.1:3306/customer
     username: root
-    password: root
+    password:
 
+#jpa config
   jpa:
     generate-ddl: true
   hibernate:
@@ -15,3 +19,31 @@ spring:
   properties:
     hibernate:
       dialect:  org.hibernate.dialect.MySQL5Dialect
+
+#axon server config AxonServerConfiguration
+axon:
+  axonserver:
+    servers: localhost:8124,localhost:8124
+    initial-nr-of-permits: 5000 # default 5000 hreads
+    command-threads: 10 # default 10 threads
+    query-threads: 10 # default 10 threads
+    keep-alive-timeout: 5000 #default 5000 ms
+    snapshot-prefetch: 1 #An {@code int} indicating the maximum number of Aggregate snapshots which will be retrieved
+    commit-timeout: 10000 #Timeout (in milliseconds) to wait for response on commit
+    connect-timeout: 5000 #Defaults to 5000 (5 seconds).
+
+    sslEnabled: false
+    command-flow-control:
+      initial-nr-of-permits: 5000 # default 5000  Initial number of permits send for message streams (events, commands, queries)
+
+
+
+
+
+
+
+
+logging:
+  config: classpath:logback-spring.xml
+
+
