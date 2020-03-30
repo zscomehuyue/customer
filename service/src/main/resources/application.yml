@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: customer
+
+
+  datasource:
+    url: jdbc:mysql://db:3306/axonbank
+    username: root
+    password: root
+
+  jpa:
+    generate-ddl: true
+  hibernate:
+    ddl-auto: update
+  properties:
+    hibernate:
+      dialect:  org.hibernate.dialect.MySQL5Dialect
