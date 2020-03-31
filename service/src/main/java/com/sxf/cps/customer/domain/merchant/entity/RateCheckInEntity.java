@@ -19,7 +19,7 @@ public class RateCheckInEntity {
     private Timestamp modified;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "uuid")
     public Long getUuid() {
         return uuid;
@@ -109,6 +109,8 @@ public class RateCheckInEntity {
         this.modified = modified;
     }
 
+    @Basic
+    @Column(name = "merchant_brand_id")
     public Long getMerchantBrandId() {
         return merchantBrandId;
     }
