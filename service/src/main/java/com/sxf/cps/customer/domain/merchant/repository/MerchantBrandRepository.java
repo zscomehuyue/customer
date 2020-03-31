@@ -8,5 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface MerchantBrandRepository extends JpaRepository<MerchantBrandEntity, String> {
-    Optional<MerchantBrandEntity> findByFactSnAndFactId(String factSn, String factId);
+    Optional<MerchantBrandEntity> findByFactVoFactSnAndFactVoFactId(String factSn, String factId);
 }

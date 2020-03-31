@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
-@Table(name = "rate_check_in", schema = "xlm")
+@Table(name = "rate_check_in")
 public class RateCheckInEntity {
     private String uuid;
     private String factSn;

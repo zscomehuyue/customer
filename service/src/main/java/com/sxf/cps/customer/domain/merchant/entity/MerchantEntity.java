@@ -10,7 +10,7 @@ import java.util.Objects;
 
 @Entity
 @ToString
-@Table(name = "merchant", schema = "xlm")
+@Table(name = "merchant")
 public class MerchantEntity {
     private String uuid;
     private String merchantCode;

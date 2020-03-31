@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "merchant_brand", schema = "xlm")
+@Table(name = "merchant_brand")
 public class MerchantBrandEntity {
     private String uuid;
 
