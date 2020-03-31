@@ -77,11 +77,15 @@
             <artifactId>spring-boot-starter-webflux</artifactId>
         </dependency>
 
-        <dependency>
+      <!--  <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
+        </dependency>-->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
@@ -123,6 +127,12 @@
             <artifactId>spring-restdocs-mockmvc</artifactId>
             <scope>test</scope>
         </dependency>
+        <!--com.google.common.base.Preconditions.checkArgument(ZLjava/lang/String;CLjava/lang/Object;)V-->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>28.2-jre</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -130,6 +140,10 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <fork>true</fork>
+                    <!-- 如果没有该配置，devtools 不会生效 -->
+                </configuration>
             </plugin>
         </plugins>
     </build>

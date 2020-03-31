@@ -18,6 +18,7 @@ import com.sxf.cps.customer.infrastructure.util.api.ExampleMatchers;
 import com.sxf.cps.customer.resources.assembler.MerchantAssembler;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.eventhandling.EventHandler;
+import org.junit.Test;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Page;
@@ -108,6 +109,7 @@ public class MerchantService {
     }
 
 
+    @Test
     public void matcherTest() {
         ExampleMatcher matcher = ExampleMatchers.builder()
                 .withMatcher(MerchantForm::getMobile, ExampleMatcher.GenericPropertyMatchers.startsWith())
@@ -123,7 +125,7 @@ public class MerchantService {
 
 
     public Optional<MerchantBrandEntity> getMerchantBrand(String factSn, String factId) {
-        return merchantBrandRepository.findByFactSnAndFactId(factSn, factId);
+        return merchantBrandRepository.findByFactVoFactSnAndFactVoFactId(factSn, factId);
     }
 
     @EventHandler
@@ -161,7 +163,7 @@ public class MerchantService {
     }
 
     private void mergeMerchantBrandEntity(CreateMerchantBrandEvent event, Supplier<String> afterMergeBrand) {
-        Optional<MerchantBrandEntity> brand = merchantBrandRepository.findByFactSnAndFactId(event.getFactSn(), event.getFactId());
+        Optional<MerchantBrandEntity> brand = merchantBrandRepository.findByFactVoFactSnAndFactVoFactId(event.getFactSn(), event.getFactId());
         brand.ifPresent(b -> {
             merchantStruct.updateMerchantBrandEntity(event, b);
             b.setModified(Timestamp.valueOf(LocalDateTime.now()));

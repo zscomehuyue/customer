@@ -30,8 +30,8 @@ public class FactVo {
     private Timestamp installDate;
     private Timestamp activeDate;
 
-    @Basic
-    @Column(name = "fact_id")
+//    @Basic
+//    @Column(name = "fact_id")
     public String getFactId() {
         return factId;
     }
@@ -40,8 +40,8 @@ public class FactVo {
         this.factId = factId;
     }
 
-    @Basic
-    @Column(name = "fact_sn")
+//    @Basic
+//    @Column(name = "fact_sn")
     public String getFactSn() {
         return factSn;
     }
@@ -50,8 +50,8 @@ public class FactVo {
         this.factSn = factSn;
     }
 
-    @Enumerated
-    @Column(name = "fact_status")
+//    @Enumerated
+//    @Column(name = "fact_status")
     public FactStatusEnum getFactStatus() {
         return factStatus;
     }
@@ -60,8 +60,8 @@ public class FactVo {
         this.factStatus = factStatus;
     }
 
-    @Enumerated
-    @Column(name = "fact_state")
+//    @Enumerated
+//    @Column(name = "fact_state")
     public FactStateEnum getFactState() {
         return factState;
     }
@@ -70,8 +70,8 @@ public class FactVo {
         this.factState = factState;
     }
 
-    @Basic
-    @Column(name = "brand_flag")
+//    @Basic
+//    @Column(name = "brand_flag")
     public BrandFlagEnum getBrandFlag() {
         return brandFlag;
     }
@@ -80,8 +80,8 @@ public class FactVo {
         this.brandFlag = brandFlag;
     }
 
-    @Basic
-    @Column(name = "install_date")
+//    @Basic
+//    @Column(name = "install_date")
     public Timestamp getInstallDate() {
         return installDate;
     }
@@ -90,8 +90,8 @@ public class FactVo {
         this.installDate = installDate;
     }
 
-    @Basic
-    @Column(name = "active_date")
+//    @Basic
+//    @Column(name = "active_date")
     public Timestamp getActiveDate() {
         return activeDate;
     }

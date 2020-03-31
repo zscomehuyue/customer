@@ -1,15 +1,21 @@
 package com.sxf.cps.customer;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.util.StringUtils;
 
+@Slf4j
 @SpringBootApplication
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = {"com.sxf.cps.customer.domain.merchant.repository"})
 public class CustomerApp {
     public static void main(String[] args) {
-        SpringApplication.run(CustomerApp.class, args);
+        ConfigurableApplicationContext context = SpringApplication.run(CustomerApp.class, args);
+        String[] activeProfiles = context.getEnvironment().getActiveProfiles();
+        log.info("=CustomerApp=>ActiveProfiles = {}", StringUtils.arrayToCommaDelimitedString(activeProfiles));
     }
 }
