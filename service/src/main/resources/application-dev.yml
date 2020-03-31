@@ -1,7 +1,7 @@
 #jpa config
 spring:
   datasource:
-    url: jdbc:h2:retry:${customer.controldb-path:./data}/customer-controldb  #重复使用该db
+    url: jdbc:h2:retry:${customer.controldb-path:./data}/customer #重复使用该db
   jpa:
     generate-ddl: true
     show-sql: true
@@ -19,6 +19,7 @@ spring:
       settings:
         trace: true
         web-allow-others: true #容许链接h2
+      path: /h2-console
 
 
 
