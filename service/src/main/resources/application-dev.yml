@@ -2,6 +2,8 @@
 spring:
   datasource:
     url: jdbc:h2:retry:${customer.controldb-path:./data}/customer #重复使用该db
+    password: root
+    username: root
   jpa:
     generate-ddl: false
     show-sql: true
