@@ -2,17 +2,18 @@ package com.sxf.cps.customer.domain.merchant.entity;
 
 
 import com.sxf.cps.customer.api.merchant.enumtype.BrandEnum;
-import com.sxf.cps.customer.api.merchant.enumtype.BrandFlagEnum;
-import com.sxf.cps.customer.api.merchant.enumtype.FactStateEnum;
-import com.sxf.cps.customer.api.merchant.enumtype.FactStatusEnum;
 import com.sxf.cps.customer.domain.merchant.vo.FactVo;
 import com.sxf.cps.customer.domain.merchant.vo.MerchantVo;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
-import java.util.Objects;
 
+/**
+ * FIXME 全部单向关联，禁止双向关联；
+ * FIXME 禁止所有的级联操作；
+ * FIXME 全部在Root关联；
+ */
 @Entity
 @Table(name = "merchant_brand")
 public class MerchantBrandEntity {
@@ -30,8 +31,8 @@ public class MerchantBrandEntity {
     private List<RateCheckInLogEntity> rateCheckInLogEntityList;
 
 
-    @OneToOne
-    @JoinColumn(name = "uuid", referencedColumnName = "merchant_brand_id")
+    @OneToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "merchant_brand_id")
     public RateCheckInEntity getRateCheckInEntity() {
         return rateCheckInEntity;
     }
@@ -40,8 +41,8 @@ public class MerchantBrandEntity {
         this.rateCheckInEntity = rateCheckInEntity;
     }
 
-    @OneToMany
-    @JoinColumn(name = "merchant_brand_id", referencedColumnName = "uuid")
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "merchant_brand_id")
     public List<RateCheckInLogEntity> getRateCheckInLogEntityList() {
         return rateCheckInLogEntityList;
     }
@@ -51,7 +52,7 @@ public class MerchantBrandEntity {
     }
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "uuid")
     public Long getUuid() {
         return uuid;

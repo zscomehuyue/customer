@@ -1,27 +1,21 @@
-#datasource config jdbc:mysql://db:3306/axonbank
-#  datasource:
-#    url: jdbc:mysql://db:3306/customer
-#    username: root
-#    password: root
-
 #jpa config
 spring:
   datasource:
-    url: jdbc:h2:retry:${customer.controldb-path:./data}/customer-controldb
+    url: jdbc:h2:retry:${customer.controldb-path:./data}/customer-controldb  #重复使用该db
   jpa:
     generate-ddl: true
     show-sql: true
     open-in-view: true
-    properties:
-      hibernate:
-        dialect:  org.hibernate.dialect.MySQL5Dialect
+#    properties:
+#      hibernate: 加上该参数，导致创建表失败？？？
+#        dialect:  org.hibernate.dialect.MySQL5Dialect
   hibernate:
-    ddl-auto: update
+    ddl-auto: update #自动更新表结构
 
 
   h2: #使用h2数据库，不需要配置url
     console:
-      enabled=true:
+      enabled: true
       settings:
         trace: true
         web-allow-others: true #容许链接h2

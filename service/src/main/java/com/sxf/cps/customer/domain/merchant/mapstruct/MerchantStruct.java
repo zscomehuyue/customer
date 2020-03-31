@@ -68,7 +68,7 @@ public interface MerchantStruct {
         MerchantStruct mapper = Mappers.getMapper(MerchantStruct.class);
         CreateMerchantEvent event = new CreateMerchantEvent();
         MerchantEntity entity = new MerchantEntity();
-        entity.setUuid("1");
+//        entity.setUuid("1");
         entity.setName("event");
 
         event.setName("event_name");

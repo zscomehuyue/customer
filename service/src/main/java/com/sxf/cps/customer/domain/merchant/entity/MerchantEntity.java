@@ -34,7 +34,7 @@ public class MerchantEntity {
     private List<MerchantBrandEntity> merchantBrandEntityList;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "uuid")
     public Long getUuid() {
         return uuid;
