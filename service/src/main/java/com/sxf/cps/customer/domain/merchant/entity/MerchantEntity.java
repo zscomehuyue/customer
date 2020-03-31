@@ -10,6 +10,8 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.Objects;
 
+import static javax.persistence.ConstraintMode.NO_CONSTRAINT;
+
 @Entity
 @ToString
 @Table(name = "merchant")
@@ -32,8 +34,8 @@ public class MerchantEntity implements Serializable {
     private Timestamp modified;
 
 
-//    @OneToMany
-//    @JoinColumn(name = "merchant_id")
+    @OneToMany
+    @JoinColumn(name = "merchant_id", foreignKey = @ForeignKey(NO_CONSTRAINT))
     private List<MerchantBrandEntity> merchantBrandEntityList;
 
     @Id
