@@ -1,4 +1,3 @@
-
 #datasource config jdbc:mysql://db:3306/axonbank
 #  datasource:
 #    url: jdbc:mysql://db:3306/customer
@@ -6,6 +5,7 @@
 #    password: root
 
 #jpa config
+spring:
   jpa:
     generate-ddl: true
   hibernate:
@@ -16,5 +16,9 @@
   h2: #使用h2数据库，不需要配置url
     console:
       enabled=true:
+      settings:
+        trace: true
+        web-allow-others: true #容许链接h2
+
 
 

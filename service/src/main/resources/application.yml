@@ -29,17 +29,12 @@ axon:
     command-flow-control:
       initial-nr-of-permits: 5000 # default 5000  Initial number of permits send for message streams (events, commands, queries)
 
-
-
 devtools:
   livereload:
     enabled: true #是否支持livereload
     port: 35729
   restart:
     enabled: true #是否支持热部署
-
-
-
 
 logging:
   config: classpath:logback-spring.xml
