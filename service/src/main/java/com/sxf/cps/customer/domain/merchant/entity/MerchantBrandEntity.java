@@ -16,7 +16,8 @@ import java.util.Objects;
 @Entity
 @Table(name = "merchant_brand")
 public class MerchantBrandEntity {
-    private String uuid;
+
+    private Long uuid;
 
     //FIXME 没有自动生成merchantId，这个自己的不需要吗？
     private MerchantVo merchantVo;
@@ -50,12 +51,13 @@ public class MerchantBrandEntity {
     }
 
     @Id
+    @GeneratedValue
     @Column(name = "uuid")
-    public String getUuid() {
+    public Long getUuid() {
         return uuid;
     }
 
-    public void setUuid(String uuid) {
+    public void setUuid(Long uuid) {
         this.uuid = uuid;
     }
 
@@ -119,4 +121,5 @@ public class MerchantBrandEntity {
     public void setFactVo(FactVo factVo) {
         this.factVo = factVo;
     }
+
 }

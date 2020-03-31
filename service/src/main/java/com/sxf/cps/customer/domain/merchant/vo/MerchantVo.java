@@ -18,7 +18,7 @@ import javax.persistence.Embeddable;
 @Accessors(chain = true)
 public class MerchantVo {
     private String merchantCode;
-    private String merchantId;
+    private Long merchantId;
     private String name;
     private String mobile;
     private String mobileCipher;
@@ -66,11 +66,11 @@ public class MerchantVo {
 
     @Basic
     @Column(name = "merchant_id")
-    public String getMerchantId() {
+    public Long getMerchantId() {
         return merchantId;
     }
 
-    public void setMerchantId(String merchantId) {
+    public void setMerchantId(Long merchantId) {
         this.merchantId = merchantId;
     }
 

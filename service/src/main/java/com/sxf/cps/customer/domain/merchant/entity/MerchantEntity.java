@@ -12,7 +12,7 @@ import java.util.Objects;
 @ToString
 @Table(name = "merchant")
 public class MerchantEntity {
-    private String uuid;
+    private Long uuid;
     private String merchantCode;
     private String name;
     private String mobile;
@@ -34,12 +34,13 @@ public class MerchantEntity {
     private List<MerchantBrandEntity> merchantBrandEntityList;
 
     @Id
+    @GeneratedValue
     @Column(name = "uuid")
-    public String getUuid() {
+    public Long getUuid() {
         return uuid;
     }
 
-    public void setUuid(String uuid) {
+    public void setUuid(Long uuid) {
         this.uuid = uuid;
     }
 

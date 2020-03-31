@@ -7,7 +7,8 @@ import java.util.Objects;
 @Entity
 @Table(name = "rate_check_in_log")
 public class RateCheckInLogEntity {
-    private String uuid;
+    private Long uuid;
+    private Long merchantBrandId;
     private String factSn;
     private String factId;
     private String brandId;
@@ -18,12 +19,13 @@ public class RateCheckInLogEntity {
     private Timestamp modified;
 
     @Id
+    @GeneratedValue
     @Column(name = "uuid")
-    public String getUuid() {
+    public Long getUuid() {
         return uuid;
     }
 
-    public void setUuid(String uuid) {
+    public void setUuid(Long uuid) {
         this.uuid = uuid;
     }
 
@@ -105,6 +107,14 @@ public class RateCheckInLogEntity {
 
     public void setModified(Timestamp modified) {
         this.modified = modified;
+    }
+
+    public Long getMerchantBrandId() {
+        return merchantBrandId;
+    }
+
+    public void setMerchantBrandId(Long merchantBrandId) {
+        this.merchantBrandId = merchantBrandId;
     }
 
     @Override
