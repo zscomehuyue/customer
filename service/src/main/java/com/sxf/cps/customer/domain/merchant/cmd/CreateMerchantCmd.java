@@ -8,18 +8,19 @@ import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 @Data
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateMerchantCmd     {
+public class CreateMerchantCmd   implements Serializable {
 
     @NotNull(message = "uuid不能为空！")
     @NotBlank(message = "uuid不能为空！")
     @TargetAggregateIdentifier
-    private String uuid;
+    private Long uuid;
 
     @NotNull(message = "merchantCode不能为空！")
     @NotBlank(message = "merchantCode不能为空！")

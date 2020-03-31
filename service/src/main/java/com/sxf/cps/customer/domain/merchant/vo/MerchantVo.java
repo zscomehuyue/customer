@@ -7,6 +7,7 @@ import lombok.experimental.Accessors;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import java.io.Serializable;
 
 /**
  * @author: zscome
@@ -16,7 +17,7 @@ import javax.persistence.Embeddable;
 @Data
 @ToString
 @Accessors(chain = true)
-public class MerchantVo {
+public class MerchantVo implements Serializable {
     private String merchantCode;
     private Long merchantId;
     private String name;

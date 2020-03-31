@@ -1,12 +1,13 @@
 package com.sxf.cps.customer.domain.merchant.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
 @Table(name = "rate_check_in_log")
-public class RateCheckInLogEntity {
+public class RateCheckInLogEntity implements Serializable {
     private Long uuid;
     private Long merchantBrandId;
     private String factSn;

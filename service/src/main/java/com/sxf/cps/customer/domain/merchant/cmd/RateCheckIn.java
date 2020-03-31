@@ -4,8 +4,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
-import org.axonframework.spring.stereotype.Aggregate;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Objects;
 
@@ -13,7 +13,7 @@ import java.util.Objects;
 @Setter
 @Accessors(chain = true)
 @NoArgsConstructor
-public class RateCheckIn {
+public class RateCheckIn implements Serializable {
     private String uuid;
     private String factSn;
     private String factId;

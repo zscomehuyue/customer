@@ -1,9 +1,11 @@
 package com.sxf.cps.customer.domain.merchant.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sxf.cps.customer.api.merchant.enumtype.BrandEnum;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Objects;
@@ -11,7 +13,8 @@ import java.util.Objects;
 @Entity
 @ToString
 @Table(name = "merchant")
-public class MerchantEntity {
+@JsonIgnoreProperties(value={"hibernateLazyInitializer","handler","fieldHandler","merchantCode"})
+public class MerchantEntity implements Serializable {
     private Long uuid;
     private String merchantCode;
     private String name;
@@ -29,8 +32,8 @@ public class MerchantEntity {
     private Timestamp modified;
 
 
-    @OneToMany
-    @JoinColumn(name = "merchant_id", referencedColumnName = "uuid")
+//    @OneToMany
+//    @JoinColumn(name = "merchant_id")
     private List<MerchantBrandEntity> merchantBrandEntityList;
 
     @Id

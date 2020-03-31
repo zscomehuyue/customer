@@ -1,6 +1,7 @@
 package com.sxf.cps.customer.domain.merchant.service;
 
 import com.sxf.cps.customer.api.merchant.dto.MerchantDto;
+import com.sxf.cps.customer.api.merchant.form.CreateMerchantForm;
 import com.sxf.cps.customer.api.merchant.form.MerchantForm;
 import com.sxf.cps.customer.domain.merchant.entity.MerchantBrandEntity;
 import com.sxf.cps.customer.domain.merchant.entity.MerchantEntity;
@@ -53,6 +54,10 @@ public class MerchantService {
     @DefaultTransaction
     public void mergeMerchant(CreateMerchantEvent event) {
         mergeMerchantEntity(event, () -> getMerchantBrand(event.getFactSn(), event.getFactId()));
+    }
+
+    public void mergeMerchant(CreateMerchantForm form) {
+        mergeMerchant(merchantAssembler.toMerchantEvent(form));
     }
 
     private void mergeMerchantEntity(CreateMerchantEvent event, Supplier<Optional<MerchantBrandEntity>> brandFun) {

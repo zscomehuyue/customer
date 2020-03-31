@@ -6,13 +6,14 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 @Data
 @ToString
 @Accessors(chain = true)
 @NoArgsConstructor
-public class MerchantDto {
+public class MerchantDto implements Serializable {
     private String uuid;
     private String merchantCode;
     private String name;

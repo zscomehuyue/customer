@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface RateCheckInRepository extends JpaRepository<RateCheckInEntity,String> {
+public interface RateCheckInRepository extends JpaRepository<RateCheckInEntity,Long> {
     Optional<RateCheckInEntity> findByFactSnAndFactId(String factSn, String factId);
 }

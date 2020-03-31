@@ -6,13 +6,19 @@ import lombok.ToString;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 @Data
 @ToString
 @Accessors(chain = true)
 @NoArgsConstructor
-public class MerchantBrandForm implements Serializable {
+public class CreateMerchantForm implements Serializable {
+    private Long uuid;
     private String merchantCode;
+    private String factId;
+    private String factSn;
+    private Timestamp registerDate;
     private String name;
     private String mobile;
+    private String mobileCipher;
 }

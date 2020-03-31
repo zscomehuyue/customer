@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface MerchantBrandRepository extends JpaRepository<MerchantBrandEntity, String> {
+public interface MerchantBrandRepository extends JpaRepository<MerchantBrandEntity, Long> {
     Optional<MerchantBrandEntity> findByFactVoFactSnAndFactVoFactId(String factSn, String factId);
 }

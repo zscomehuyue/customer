@@ -6,6 +6,7 @@ import com.sxf.cps.customer.domain.merchant.vo.FactVo;
 import com.sxf.cps.customer.domain.merchant.vo.MerchantVo;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -16,7 +17,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "merchant_brand")
-public class MerchantBrandEntity {
+public class MerchantBrandEntity implements Serializable {
 
     private Long uuid;
 

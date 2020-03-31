@@ -11,6 +11,7 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Enumerated;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
@@ -21,7 +22,7 @@ import java.sql.Timestamp;
 @Data
 @ToString
 @Accessors(chain = true)
-public class FactVo {
+public class FactVo implements Serializable {
     private String factId;
     private String factSn;
     private FactStatusEnum factStatus;

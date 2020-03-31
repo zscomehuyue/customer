@@ -1,8 +1,10 @@
 package com.sxf.cps.customer.resources.assembler;
 
 import com.sxf.cps.customer.api.merchant.dto.MerchantDto;
+import com.sxf.cps.customer.api.merchant.form.CreateMerchantForm;
 import com.sxf.cps.customer.api.merchant.form.MerchantForm;
 import com.sxf.cps.customer.domain.merchant.entity.MerchantEntity;
+import com.sxf.cps.customer.domain.merchant.event.CreateMerchantEvent;
 import org.mapstruct.Mapper;
 import org.springframework.stereotype.Service;
 
@@ -13,4 +15,6 @@ public interface MerchantAssembler {
     MerchantEntity toMerchantEntity(MerchantForm form);
 
     MerchantDto toMerchantDto(MerchantEntity entity);
+
+    CreateMerchantEvent toMerchantEvent(CreateMerchantForm entity);
 }

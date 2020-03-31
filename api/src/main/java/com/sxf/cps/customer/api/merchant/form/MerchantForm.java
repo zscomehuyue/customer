@@ -5,14 +5,16 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
+
 @Data
 @ToString
 @Accessors(chain = true)
 @NoArgsConstructor
-public class MerchantForm {
+public class MerchantForm implements Serializable {
     private String merchantCode;
     private String name;
     private String mobile;
-    private int page=1;
-    private int size=10;
+    private int page = 1;
+    private int size = 10;
 }

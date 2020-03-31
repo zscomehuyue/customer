@@ -72,7 +72,7 @@ public interface MerchantStruct {
         entity.setName("event");
 
         event.setName("event_name");
-        event.setUuid("event");
+//        event.setUuid("event");
         System.out.println(entity);
         mapper.updateMerchantEntity(event, entity);
         System.out.println(entity);

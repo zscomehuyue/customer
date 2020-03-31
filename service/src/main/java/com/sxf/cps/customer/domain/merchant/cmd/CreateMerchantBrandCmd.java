@@ -12,12 +12,13 @@ import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 @Data
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateMerchantBrandCmd {
+public class CreateMerchantBrandCmd implements Serializable {
 
     @NotNull(message = "uuid不能为空！")
     @NotBlank(message = "uuid不能为空！")

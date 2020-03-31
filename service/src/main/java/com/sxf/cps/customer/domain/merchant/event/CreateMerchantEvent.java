@@ -5,14 +5,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 @Data
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateMerchantEvent {
-    private String uuid;
+public class CreateMerchantEvent implements Serializable {
+    private Long uuid;
     private String merchantCode;
     private String factId;
     private String factSn;

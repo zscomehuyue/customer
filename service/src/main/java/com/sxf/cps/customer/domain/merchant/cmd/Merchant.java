@@ -14,6 +14,7 @@ import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.spring.stereotype.Aggregate;
 
 import javax.annotation.Resource;
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Objects;
 
@@ -34,7 +35,7 @@ import static org.axonframework.modelling.command.AggregateLifecycle.apply;
 @Getter
 @Accessors(chain = true)
 @NoArgsConstructor
-public class Merchant {
+public class Merchant implements Serializable {
     @AggregateIdentifier
     private String uuid;
     private String merchantCode;
