@@ -4,57 +4,46 @@
     <property name="LOG_PATH" value="${APP_HOME:-.}/logs"/>
     <property name="FILE_IMMEDIATE_FLUSH" value="true"/>
     <!-- 引用公共配置 -->
-<!--    <include resource="com/suixingpay/takin/logback/base.xml"/>-->
+    <include resource="org/springframework/boot/logging/logback/base.xml" />
     <jmxConfigurator/>
 
     <springProfile name="prod">
         <logger name="org.springframework" level="WARN"/>
-        <logger name="com.suixingpay" level="INFO"/>
+        <logger name="com.sxf" level="INFO"/>
         <logger name="com.jarvis" level="INFO"/>
         <root level="INFO">
             <appender-ref ref="CONSOLE"/>
             <appender-ref ref="FILE"/>
-            <appender-ref ref="ERROR"/>
         </root>
     </springProfile>
 
     <!-- 非生产环境环境. -->
     <springProfile name="dev">
-        <logger name="com.suixingpay" level="INFO"/>
+        <logger name="com.sxf" level="INFO"/>
         <logger name="com.jarvis" level="INFO"/>
         <root level="INFO">
             <appender-ref ref="CONSOLE"/>
             <appender-ref ref="FILE"/>
-            <appender-ref ref="ERROR"/>
         </root>
     </springProfile>
+
     <springProfile name="test">
         <logger name="org.springframework" level="WARN"/>
-        <logger name="com.suixingpay" level="INFO"/>
+        <logger name="com.sxf" level="INFO"/>
         <logger name="com.jarvis" level="INFO"/>
         <root level="INFO">
             <appender-ref ref="CONSOLE"/>
             <appender-ref ref="FILE"/>
-            <appender-ref ref="ERROR"/>
         </root>
     </springProfile>
+
     <!-- RC环境. -->
     <springProfile name="rc">
         <logger name="org.springframework" level="WARN"/>
-        <logger name="com.suixingpay" level="INFO"/>
+        <logger name="com.sxf" level="INFO"/>
         <root level="INFO">
             <appender-ref ref="FILE"/>
-            <appender-ref ref="ERROR"/>
         </root>
     </springProfile>
-    <!-- 生产环境. -->
-    <springProfile name="prod">
-        <logger name="org.springframework" level="WARN"/>
-        <logger name="com.suixingpay" level="INFO"/>
-        <root level="INFO">
-            <appender-ref ref="ASYNC_FILE"/>
-            <appender-ref ref="ERROR"/>
-            <appender-ref ref="kafkaAppender"/>
-        </root>
-    </springProfile>
+
 </configuration>
