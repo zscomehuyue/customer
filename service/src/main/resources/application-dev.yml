@@ -1,0 +1,20 @@
+
+#datasource config jdbc:mysql://db:3306/axonbank
+#  datasource:
+#    url: jdbc:mysql://db:3306/customer
+#    username: root
+#    password: root
+
+#jpa config
+  jpa:
+    generate-ddl: true
+  hibernate:
+    ddl-auto: update
+  properties:
+    hibernate:
+      dialect:  org.hibernate.dialect.MySQL5Dialect
+  h2: #使用h2数据库，不需要配置url
+    console:
+      enabled=true:
+
+

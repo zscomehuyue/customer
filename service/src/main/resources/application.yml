@@ -4,21 +4,14 @@ server:
 spring:
   application:
     name: customer
+  profiles:
+    active: ${profile:dev}
+  aop:
+    auto: true
+    proxy-target-class: true
 
-#datasource config
-  datasource:
-    url: jdbc:mysql://127.0.0.1:3306/customer
-    username: root
-    password:
-
-#jpa config
-  jpa:
-    generate-ddl: true
-  hibernate:
-    ddl-auto: update
-  properties:
-    hibernate:
-      dialect:  org.hibernate.dialect.MySQL5Dialect
+  main:
+    allow-bean-definition-overriding: true # false bug the bean 'merchantRepository' could not be registered. A bean with that name has already been defined and overriding is disabled.
 
 #axon server config AxonServerConfiguration
 axon:
@@ -38,7 +31,12 @@ axon:
 
 
 
-
+devtools:
+  livereload:
+    enabled: true #是否支持livereload
+    port: 35729
+  restart:
+    enabled: true #是否支持热部署
 
 
 
