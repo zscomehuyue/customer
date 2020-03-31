@@ -10,6 +10,8 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 
+import static javax.persistence.ConstraintMode.NO_CONSTRAINT;
+
 /**
  * FIXME 全部单向关联，禁止双向关联；
  * FIXME 禁止所有的级联操作；
@@ -32,8 +34,11 @@ public class MerchantBrandEntity implements Serializable {
     private List<RateCheckInLogEntity> rateCheckInLogEntityList;
 
 
+    /**
+     * MerchantBrandEntity中的uuid，通过rateCheckInEntity的merchant_brand_id进行关联
+     */
     @OneToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "merchant_brand_id")
+    @JoinColumn(nullable = false, name = "uuid", referencedColumnName = "merchant_brand_id", foreignKey = @ForeignKey(NO_CONSTRAINT))
     public RateCheckInEntity getRateCheckInEntity() {
         return rateCheckInEntity;
     }
@@ -43,7 +48,7 @@ public class MerchantBrandEntity implements Serializable {
     }
 
     @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "merchant_brand_id")
+    @JoinColumn(name = "merchant_brand_id", foreignKey = @ForeignKey(NO_CONSTRAINT))
     public List<RateCheckInLogEntity> getRateCheckInLogEntityList() {
         return rateCheckInLogEntityList;
     }
