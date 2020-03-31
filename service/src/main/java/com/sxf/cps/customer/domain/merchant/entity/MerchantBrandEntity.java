@@ -15,6 +15,7 @@ import static javax.persistence.ConstraintMode.NO_CONSTRAINT;
 /**
  * FIXME 全部单向关联，禁止双向关联；
  * FIXME 禁止所有的级联操作；
+ * FIXME 禁止所有外键生成，在业务方面控制；
  * FIXME 全部在Root关联；
  */
 @Entity
