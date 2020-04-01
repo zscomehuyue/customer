@@ -17,7 +17,9 @@ public class BeanValueUtils {
 
     private static List<String> EXCLUDE_FILEDS = new ArrayList<String>(1) {
         {
+            //hibernate id不能手动设置
             add("id");
+            add("uuid");
         }
     };
 
