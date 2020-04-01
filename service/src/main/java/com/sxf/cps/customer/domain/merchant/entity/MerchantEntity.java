@@ -15,7 +15,9 @@ import static javax.persistence.ConstraintMode.NO_CONSTRAINT;
 @ToString
 @Table(name = "merchant")
 //json格式化报告错误，需要排出如下字段；
-@JsonIgnoreProperties(value={"hibernateLazyInitializer","handler","fieldHandler","merchantCode"})
+@NamedEntityGraph(name = "MerchantEntity.merchantBrandEntityList",
+        attributeNodes = {@NamedAttributeNode("merchantBrandEntityList")})
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler", "fieldHandler", "merchantCode"})
 public class MerchantEntity implements Serializable {
     private Long id;
     private String name;
@@ -31,7 +33,7 @@ public class MerchantEntity implements Serializable {
     private List<MerchantBrandEntity> merchantBrandEntityList;
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     public Long getId() {
         return id;
@@ -133,7 +135,7 @@ public class MerchantEntity implements Serializable {
     }
 
     @OneToMany
-    @JoinColumn(name = "merchant_id", foreignKey = @ForeignKey(NO_CONSTRAINT))
+    @JoinColumn(insertable = false, updatable = false, name = "merchant_id", foreignKey = @ForeignKey(NO_CONSTRAINT))
     public List<MerchantBrandEntity> getMerchantBrandEntityList() {
         return merchantBrandEntityList;
     }

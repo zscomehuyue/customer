@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS xlm;
-create DATABASE xlm  default character set utf8 collate utf8_general_ci;
-use xlm;
+DROP DATABASE IF EXISTS customer;
+create DATABASE customer  default character set utf8 collate utf8_general_ci;
+use customer;
 
 DROP TABLE IF EXISTS merchant;
 create table merchant

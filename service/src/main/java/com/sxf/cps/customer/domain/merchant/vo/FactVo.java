@@ -31,7 +31,7 @@ public class FactVo implements Serializable {
     private Timestamp activeDate;
 
     @Basic
-    @Column(name = "fact_id")
+    @Column(name = "fact_id", length = 32)
     public String getFactId() {
         return factId;
     }
@@ -41,7 +41,7 @@ public class FactVo implements Serializable {
     }
 
     @Basic
-    @Column(name = "fact_sn")
+    @Column(name = "fact_sn", length = 32)
     public String getFactSn() {
         return factSn;
     }
@@ -101,7 +101,7 @@ public class FactVo implements Serializable {
     }
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "brand_id")
+    @Column(name = "brand_id", length = 10)
     public BrandEnum getBrandId() {
         return brandId;
     }

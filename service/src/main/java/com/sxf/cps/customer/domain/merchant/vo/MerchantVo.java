@@ -18,14 +18,14 @@ import java.io.Serializable;
 @ToString
 @Accessors(chain = true)
 public class MerchantVo implements Serializable {
-    private String merchantCode;
     private Long merchantId;
+    private String merchantCode;
     private String name;
     private String mobile;
     private String mobileCipher;
 
     @Basic
-    @Column(name = "merchant_code")
+    @Column(name = "merchant_code", length = 32)
     public String getMerchantCode() {
         return merchantCode;
     }
@@ -35,7 +35,7 @@ public class MerchantVo implements Serializable {
     }
 
     @Basic
-    @Column(name = "name")
+    @Column(name = "name", length = 32)
     public String getName() {
         return name;
     }
@@ -45,7 +45,7 @@ public class MerchantVo implements Serializable {
     }
 
     @Basic
-    @Column(name = "mobile")
+    @Column(name = "mobile", length = 32)
     public String getMobile() {
         return mobile;
     }
@@ -55,7 +55,7 @@ public class MerchantVo implements Serializable {
     }
 
     @Basic
-    @Column(name = "mobile_cipher")
+    @Column(name = "mobile_cipher", length = 64)
     public String getMobileCipher() {
         return mobileCipher;
     }

@@ -31,7 +31,7 @@ public class RateCheckInEntity implements Serializable {
     }
 
     @Basic
-    @Column(name = "fact_sn")
+    @Column(name = "fact_sn", length = 32)
     public String getFactSn() {
         return factSn;
     }
@@ -41,7 +41,7 @@ public class RateCheckInEntity implements Serializable {
     }
 
     @Basic
-    @Column(name = "fact_id")
+    @Column(name = "fact_id", length = 32)
     public String getFactId() {
         return factId;
     }
@@ -51,7 +51,7 @@ public class RateCheckInEntity implements Serializable {
     }
 
     @Basic
-    @Column(name = "brand_id")
+    @Column(name = "brand_id", length = 10)
     public String getBrandId() {
         return brandId;
     }
@@ -61,7 +61,7 @@ public class RateCheckInEntity implements Serializable {
     }
 
     @Basic
-    @Column(name = "rate_id")
+    @Column(name = "rate_id", length = 10)
     public String getRateId() {
         return rateId;
     }
@@ -71,7 +71,7 @@ public class RateCheckInEntity implements Serializable {
     }
 
     @Basic
-    @Column(name = "rate_desc")
+    @Column(name = "rate_desc", length = 64)
     public String getRateDesc() {
         return rateDesc;
     }
@@ -81,7 +81,7 @@ public class RateCheckInEntity implements Serializable {
     }
 
     @Basic
-    @Column(name = "check_in_user")
+    @Column(name = "creator", length = 64)
     public String getCreator() {
         return creator;
     }

@@ -1,0 +1,27 @@
+#jpa config
+spring:
+  datasource:
+    url: jdbc:h2:retry:${customer.controldb-path:./data}/customer #重复使用该db
+    password: root
+    username: root
+  jpa:
+    generate-ddl: false
+    show-sql: true
+    open-in-view: true
+#    properties:
+#      hibernate: 加上该参数，导致创建表失败？？？
+#        dialect:  org.hibernate.dialect.MySQL5Dialect
+    hibernate:
+      ddl-auto: update #update 自动更新表结构 ,none 不更新表结构
+
+
+  h2: #使用h2数据库，不需要配置url
+    console:
+      enabled: true
+      settings:
+        trace: true
+        web-allow-others: true #容许链接h2
+      path: /h2-console
+
+
+

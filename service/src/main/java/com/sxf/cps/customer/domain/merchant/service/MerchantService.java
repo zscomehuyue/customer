@@ -1,6 +1,8 @@
 package com.sxf.cps.customer.domain.merchant.service;
 
 import com.sxf.cps.customer.api.merchant.dto.MerchantDto;
+import com.sxf.cps.customer.api.merchant.enumtype.BrandEnum;
+import com.sxf.cps.customer.api.merchant.enumtype.BrandFlagEnum;
 import com.sxf.cps.customer.api.merchant.form.CreateMerchantForm;
 import com.sxf.cps.customer.api.merchant.form.MerchantForm;
 import com.sxf.cps.customer.domain.merchant.entity.MerchantBrandEntity;
@@ -14,6 +16,7 @@ import com.sxf.cps.customer.domain.merchant.repository.MerchantBrandRepository;
 import com.sxf.cps.customer.domain.merchant.repository.MerchantRepository;
 import com.sxf.cps.customer.domain.merchant.repository.RateCheckInLogRepository;
 import com.sxf.cps.customer.domain.merchant.repository.RateCheckInRepository;
+import com.sxf.cps.customer.infrastructure.util.BeanValueUtils;
 import com.sxf.cps.customer.infrastructure.util.DefaultTransaction;
 import com.sxf.cps.customer.infrastructure.util.api.ExampleMatchers;
 import com.sxf.cps.customer.resources.assembler.MerchantAssembler;
@@ -25,6 +28,10 @@ import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.sql.Timestamp;
@@ -34,6 +41,8 @@ import java.util.function.Supplier;
 
 @Slf4j
 @Service
+@RestController
+@RequestMapping("test/merchant")
 public class MerchantService {
 
     @Resource
@@ -186,5 +195,26 @@ public class MerchantService {
         afterMergeBrand.get();
     }
 
+
+
+    @Test
+    @GetMapping("save/{id}")
+    public void saveAll(@PathVariable int id) {
+        MerchantEntity merchant = BeanValueUtils.initValue(MerchantEntity.class, id);
+        merchantRepository.save(merchant);
+        MerchantBrandEntity brandEntity = BeanValueUtils.initValue(MerchantBrandEntity.class, id);
+        brandEntity.getMerchantVo().setMerchantId(merchant.getId());
+        brandEntity.getFactVo().setBrandId(BrandEnum.MPOS);
+        brandEntity.getFactVo().setBrandFlag(BrandFlagEnum.DEFAULT_VALUE);
+        merchantBrandRepository.save(brandEntity);
+
+        RateCheckInEntity checkInEntity = BeanValueUtils.initValue(RateCheckInEntity.class, id);
+        checkInEntity.setMerchantBrandId(brandEntity.getId());
+        rateCheckInRepository.save(checkInEntity);
+
+        RateCheckInLogEntity log = BeanValueUtils.initValue(RateCheckInLogEntity.class, id);
+        log.setMerchantBrandId(brandEntity.getId());
+        rateCheckInLogRepository.save(log);
+    }
 
 }
