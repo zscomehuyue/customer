@@ -24,7 +24,6 @@ public class MerchantVo implements Serializable {
     private String mobile;
     private String mobileCipher;
 
-
     @Basic
     @Column(name = "merchant_code")
     public String getMerchantCode() {
