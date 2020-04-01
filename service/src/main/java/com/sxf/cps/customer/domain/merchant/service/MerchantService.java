@@ -196,39 +196,34 @@ public class MerchantService {
     }
 
 
-
     @Test
     @GetMapping("save/{id}")
     @DefaultTransaction
     public void saveAll(@PathVariable int id) {
         MerchantEntity merchant = BeanValueUtils.initValue(MerchantEntity.class, id);
         //FIXME id 必须为空，这个值hibernat会自动生成；
-        merchant.setId(null);
+        //merchant.setId(null);
 
-        System.err.println("=saveAll=>"+merchant);
+        System.err.println("=saveAll=>" + merchant);
         merchantRepository.save(merchant);
 
         MerchantBrandEntity brandEntity = BeanValueUtils.initValue(MerchantBrandEntity.class, id);
         brandEntity.getMerchantVo().setMerchantId(merchant.getId());
         brandEntity.getFactVo().setBrandId(BrandEnum.MPOS);
         brandEntity.getFactVo().setBrandFlag(BrandFlagEnum.DEFAULT_VALUE);
-        System.err.println("=saveAll=>"+brandEntity);
+        System.err.println("=saveAll=>" + brandEntity);
         brandEntity.setRateCheckInEntity(null);
         merchantBrandRepository.save(brandEntity);
 
         RateCheckInEntity checkInEntity = BeanValueUtils.initValue(RateCheckInEntity.class, id);
         checkInEntity.setMerchantBrandId(brandEntity.getId());
-        System.err.println("=saveAll=>"+checkInEntity);
+        System.err.println("=saveAll=>" + checkInEntity);
         rateCheckInRepository.save(checkInEntity);
 
         RateCheckInLogEntity log = BeanValueUtils.initValue(RateCheckInLogEntity.class, id);
         log.setMerchantBrandId(brandEntity.getId());
-        System.err.println("=saveAll=>"+log);
+        System.err.println("=saveAll=>" + log);
         rateCheckInLogRepository.save(log);
-
-
-
-
 
     }
 
