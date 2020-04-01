@@ -14,6 +14,7 @@ import static javax.persistence.ConstraintMode.NO_CONSTRAINT;
 @Entity
 @ToString
 @Table(name = "merchant")
+//json格式化报告错误，需要排出如下字段；
 @JsonIgnoreProperties(value={"hibernateLazyInitializer","handler","fieldHandler","merchantCode"})
 public class MerchantEntity implements Serializable {
     private Long id;
