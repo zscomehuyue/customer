@@ -10,7 +10,8 @@ build/
 catalina*
 logs/
 out/
-*.class 
+*.class
+*.log
 
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
@@ -48,12 +49,12 @@ yarn-error.log*
 **/.DS_Store
 test.sql
 data.sql
-dumpsql.sh 
-importsql.sh 
+dumpsql.sh
+importsql.sh
 
-*.iws 
+*.iws
 *.ipr
-*.iml 
+*.iml
 
 target/
 
