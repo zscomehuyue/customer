@@ -202,6 +202,7 @@ public class MerchantService {
     public void saveAll(@PathVariable int id) {
         MerchantEntity merchant = BeanValueUtils.initValue(MerchantEntity.class, id);
         merchantRepository.save(merchant);
+
         MerchantBrandEntity brandEntity = BeanValueUtils.initValue(MerchantBrandEntity.class, id);
         brandEntity.getMerchantVo().setMerchantId(merchant.getId());
         brandEntity.getFactVo().setBrandId(BrandEnum.MPOS);
