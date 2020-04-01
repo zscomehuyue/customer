@@ -14,7 +14,7 @@ import java.sql.Timestamp;
 @Accessors(chain = true)
 @NoArgsConstructor
 public class MerchantDto implements Serializable {
-    private String uuid;
+    private String id;
     private String merchantCode;
     private String name;
     private String mobile;

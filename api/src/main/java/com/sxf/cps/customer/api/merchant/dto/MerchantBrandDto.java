@@ -16,6 +16,7 @@ import java.sql.Timestamp;
 @Accessors(chain = true)
 @NoArgsConstructor
 public class MerchantBrandDto implements Serializable {
+    private String id;
     private String merchantCode;
     private BrandEnum brandId;
     private String merchantId;

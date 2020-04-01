@@ -15,6 +15,8 @@ public class MerchantForm implements Serializable {
     private String merchantCode;
     private String name;
     private String mobile;
-    private int page = 1;
+
+    //hibernate page 从0开始；
+    private int page = 0;
     private int size = 10;
 }
