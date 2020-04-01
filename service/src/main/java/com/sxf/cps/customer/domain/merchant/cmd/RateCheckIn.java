@@ -20,7 +20,7 @@ public class RateCheckIn implements Serializable {
     private String brandId;
     private String rateId;
     private String rateDesc;
-    private String checkInUser;
+    private String creator;
     private Timestamp created;
     private Timestamp modified;
 

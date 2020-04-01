@@ -15,7 +15,7 @@ public class RateCheckInEntity implements Serializable {
     private String brandId;
     private String rateId;
     private String rateDesc;
-    private String checkInUser;
+    private String creator;
     private Timestamp created;
     private Timestamp modified;
 
@@ -82,12 +82,12 @@ public class RateCheckInEntity implements Serializable {
 
     @Basic
     @Column(name = "check_in_user")
-    public String getCheckInUser() {
-        return checkInUser;
+    public String getCreator() {
+        return creator;
     }
 
-    public void setCheckInUser(String checkInUser) {
-        this.checkInUser = checkInUser;
+    public void setCreator(String creator) {
+        this.creator = creator;
     }
 
     @Basic
@@ -131,13 +131,13 @@ public class RateCheckInEntity implements Serializable {
                 Objects.equals(brandId, that.brandId) &&
                 Objects.equals(rateId, that.rateId) &&
                 Objects.equals(rateDesc, that.rateDesc) &&
-                Objects.equals(checkInUser, that.checkInUser) &&
+                Objects.equals(creator, that.creator) &&
                 Objects.equals(created, that.created) &&
                 Objects.equals(modified, that.modified);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, factSn, factId, brandId, rateId, rateDesc, checkInUser, created, modified);
+        return Objects.hash(id, factSn, factId, brandId, rateId, rateDesc, creator, created, modified);
     }
 }

@@ -27,27 +27,27 @@ public interface MerchantStruct {
     MerchantBrandEntity toMerchantBrandEntity(CreateMerchantBrandEvent cmd);
 
     @Mappings({
-            @Mapping(source = "userId", target = "checkInUser"),
+            @Mapping(source = "userId", target = "creator"),
     })
     RateCheckInEntity toRateCheckInEntity(CreateMerchantBrandEvent cmd);
 
     @Mappings({
-            @Mapping(source = "userId", target = "checkInUser"),
+            @Mapping(source = "userId", target = "creator"),
     })
     RateCheckInLogEntity toRateCheckInLogEntity(CreateMerchantBrandEvent cmd);
 
     @Mappings({
-            @Mapping(source = "userId", target = "checkInUser"),
+            @Mapping(source = "userId", target = "creator"),
     })
     RateCheckIn toRateCheckIn(CreateMerchantBrandEvent event);
 
     @Mappings({
-            @Mapping(source = "userId", target = "checkInUser"),
+            @Mapping(source = "userId", target = "creator"),
     })
     RateCheckInLog toRateCheckInLog(CreateMerchantBrandEvent event);
 
     @Mappings({
-            @Mapping(source = "userId", target = "checkInUser"),
+            @Mapping(source = "userId", target = "creator"),
     })
     void updateRateCheckIn(CreateMerchantBrandEvent event, @MappingTarget RateCheckIn rateCheckIn);
 
