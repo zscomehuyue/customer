@@ -1,15 +1,19 @@
 package com.sxf.cps.customer.domain.merchant.entity;
 
+import lombok.ToString;
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Objects;
-
+@ToString
 @Entity
+@GenericGenerator(name = "jpa-uuid", strategy = "uuid")
 @Table(name = "rate_check_in")
 public class RateCheckInEntity implements Serializable {
-    private Long id;
-    private Long merchantBrandId;
+    private String id;
+    private String merchantBrandId;
     private String factSn;
     private String factId;
     private String brandId;
@@ -20,13 +24,13 @@ public class RateCheckInEntity implements Serializable {
     private Timestamp modified;
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name = "id")
-    public Long getId() {
+    @GeneratedValue(generator = "jpa-uuid")
+    @Column(name = "id",length = 32)
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -112,11 +116,11 @@ public class RateCheckInEntity implements Serializable {
 
     @Basic
     @Column(name = "merchant_brand_id")
-    public Long getMerchantBrandId() {
+    public String getMerchantBrandId() {
         return merchantBrandId;
     }
 
-    public void setMerchantBrandId(Long merchantBrandId) {
+    public void setMerchantBrandId(String merchantBrandId) {
         this.merchantBrandId = merchantBrandId;
     }
 

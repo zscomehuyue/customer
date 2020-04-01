@@ -14,3 +14,4 @@
 
 ## 启动测试用例时，提示MerchantService 加载不到；
 
+## hibernate rpc 时，如果客户端，这个时候获取延迟加载的类，应该为null；预警超过了session的范围？

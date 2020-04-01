@@ -4,6 +4,7 @@ package com.sxf.cps.customer.domain.merchant.entity;
 import com.sxf.cps.customer.domain.merchant.vo.FactVo;
 import com.sxf.cps.customer.domain.merchant.vo.MerchantVo;
 import lombok.ToString;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -17,18 +18,20 @@ import static javax.persistence.ConstraintMode.NO_CONSTRAINT;
  * FIXME 禁止所有的级联操作；
  * FIXME 禁止所有外键生成，在业务方面控制；
  * FIXME 全部在Root关联；
+ * FIXME 实体是否，不配置任何关联对象，岂不是根简单？？，但是查询是需要的；
  */
 @ToString
 @Entity
 @Table(name = "merchant_brand")
 //NamedEntityGraph and EntityGraph 解决n+1
+@GenericGenerator(name = "jpa-uuid", strategy = "uuid")
 @NamedEntityGraph(name = "MerchantBrandEntity.rateCheckInLogEntityList",
         attributeNodes = {
                 @NamedAttributeNode("rateCheckInEntity"),
                 @NamedAttributeNode("rateCheckInLogEntityList")})
 public class MerchantBrandEntity implements Serializable {
 
-    private Long id;
+    private String id;
     private String userId;
     private FactVo factVo;
     private MerchantVo merchantVo;
@@ -42,7 +45,7 @@ public class MerchantBrandEntity implements Serializable {
      * MerchantBrandEntity中的uuid，通过rateCheckInEntity的merchant_brand_id进行关联
      */
     @OneToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(insertable = false, updatable = false, nullable = false, name = "id", referencedColumnName = "merchant_brand_id", foreignKey = @ForeignKey(NO_CONSTRAINT))
+    @JoinColumn(insertable = false, updatable = false,name = "id", referencedColumnName = "merchant_brand_id", foreignKey = @ForeignKey(NO_CONSTRAINT))
     public RateCheckInEntity getRateCheckInEntity() {
         return rateCheckInEntity;
     }
@@ -62,13 +65,13 @@ public class MerchantBrandEntity implements Serializable {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    public Long getId() {
+    @GeneratedValue(generator = "jpa-uuid")
+    @Column(name = "id",length = 32)
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

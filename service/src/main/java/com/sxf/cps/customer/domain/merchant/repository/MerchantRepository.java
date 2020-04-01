@@ -15,7 +15,7 @@ import java.util.Optional;
 @Repository
 @RestController
 @RequestMapping("test/merchant")
-public interface MerchantRepository extends JpaRepository<MerchantEntity, Long> {
+public interface MerchantRepository extends JpaRepository<MerchantEntity, String> {
     @EntityGraph(value = "MerchantEntity.merchantBrandEntityList")
     Optional<MerchantEntity> findByMerchantCode(String merchantCode);
 
@@ -24,5 +24,5 @@ public interface MerchantRepository extends JpaRepository<MerchantEntity, Long> 
 
     @GetMapping("getOne/{id}")
     @EntityGraph(value = "MerchantEntity.merchantBrandEntityList")
-    MerchantEntity getOne(@PathVariable Long id);
+    MerchantEntity getOne(@PathVariable String id);
 }

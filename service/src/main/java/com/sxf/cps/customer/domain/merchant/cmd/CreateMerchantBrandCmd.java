@@ -23,7 +23,7 @@ public class CreateMerchantBrandCmd implements Serializable {
     @NotNull(message = "uuid不能为空！")
     @NotBlank(message = "uuid不能为空！")
     @TargetAggregateIdentifier
-    private Long id;
+    private String id;
 
     @NotNull(message="factId不能为空！")
     @NotBlank(message="factId不能为空！")

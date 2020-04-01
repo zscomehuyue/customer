@@ -3,6 +3,7 @@ package com.sxf.cps.customer.domain.merchant.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sxf.cps.customer.domain.merchant.vo.VipVo;
 import lombok.ToString;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -14,12 +15,13 @@ import static javax.persistence.ConstraintMode.NO_CONSTRAINT;
 @Entity
 @ToString
 @Table(name = "merchant")
+@GenericGenerator(name = "jpa-uuid", strategy = "uuid")
 //json格式化报告错误，需要排出如下字段；
 @NamedEntityGraph(name = "MerchantEntity.merchantBrandEntityList",
         attributeNodes = {@NamedAttributeNode("merchantBrandEntityList")})
 @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler", "fieldHandler", "merchantCode"})
 public class MerchantEntity implements Serializable {
-    private Long id;
+    private String id;
     private String name;
     private String mobile;
     private String merchantCode;
@@ -33,13 +35,13 @@ public class MerchantEntity implements Serializable {
     private List<MerchantBrandEntity> merchantBrandEntityList;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    public Long getId() {
+    @GeneratedValue(generator = "jpa-uuid")
+    @Column(name = "id",length = 32)
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

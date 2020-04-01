@@ -14,7 +14,7 @@ import java.util.Objects;
 @Accessors(chain = true)
 @NoArgsConstructor
 public class RateCheckIn implements Serializable {
-    private Long id;
+    private String id;
     private String factSn;
     private String factId;
     private String brandId;

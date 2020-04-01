@@ -13,7 +13,7 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CreateMerchantEvent implements Serializable {
-    private Long id;
+    private String id;
     private String merchantCode;
     private String factId;
     private String factSn;

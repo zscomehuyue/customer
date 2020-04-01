@@ -13,7 +13,7 @@ import java.sql.Timestamp;
 @Accessors(chain = true)
 @NoArgsConstructor
 public class CreateMerchantForm implements Serializable {
-    private Long uuid;
+    private String uuid;
     private String merchantCode;
     private String factId;
     private String factSn;

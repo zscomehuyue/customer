@@ -10,13 +10,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface MerchantBrandRepository extends JpaRepository<MerchantBrandEntity, Long> {
+public interface MerchantBrandRepository extends JpaRepository<MerchantBrandEntity, String> {
     Optional<MerchantBrandEntity> findByFactVoFactSnAndFactVoFactId(String factSn, String factId);
 
     @EntityGraph(value = "MerchantBrandEntity.rateCheckInLogEntityList")
     List<MerchantBrandEntity> findAll();
 
     @EntityGraph(value = "MerchantBrandEntity.rateCheckInLogEntityList")
-    MerchantBrandEntity getOne(@PathVariable Long id);
+    MerchantBrandEntity getOne(@PathVariable String id);
 
 }

@@ -18,7 +18,7 @@ import java.io.Serializable;
 @ToString
 @Accessors(chain = true)
 public class MerchantVo implements Serializable {
-    private Long merchantId;
+    private String merchantId;
     private String merchantCode;
     private String name;
     private String mobile;
@@ -66,11 +66,11 @@ public class MerchantVo implements Serializable {
 
     @Basic
     @Column(name = "merchant_id")
-    public Long getMerchantId() {
+    public String getMerchantId() {
         return merchantId;
     }
 
-    public void setMerchantId(Long merchantId) {
+    public void setMerchantId(String merchantId) {
         this.merchantId = merchantId;
     }
 

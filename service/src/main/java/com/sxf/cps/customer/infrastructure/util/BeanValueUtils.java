@@ -25,7 +25,7 @@ public class BeanValueUtils {
                 } else if (Timestamp.class.getTypeName().equals(f.getGenericType().getTypeName())) {
                     ReflectionUtils.setFieldValue(f, obj, Timestamp.valueOf(LocalDateTime.now()));
                 } else if (String.class.getTypeName().equals(f.getGenericType().getTypeName())) {
-                    ReflectionUtils.setFieldValue(f, obj, f.getName());
+                    ReflectionUtils.setFieldValue(f, obj, f.getName()+"-"+value);
                 } else if (!f.getGenericType().getClass().isPrimitive() &&
                         !List.class.isAssignableFrom(f.getType()) &&
                         !f.getType().isEnum()) {

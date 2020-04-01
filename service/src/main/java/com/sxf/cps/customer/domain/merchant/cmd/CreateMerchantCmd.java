@@ -20,7 +20,7 @@ public class CreateMerchantCmd   implements Serializable {
     @NotNull(message = "uuid不能为空！")
     @NotBlank(message = "uuid不能为空！")
     @TargetAggregateIdentifier
-    private Long id;
+    private String id;
 
     @NotNull(message = "merchantCode不能为空！")
     @NotBlank(message = "merchantCode不能为空！")
