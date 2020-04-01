@@ -30,7 +30,6 @@ import static org.axonframework.modelling.command.AggregateLifecycle.apply;
 @Accessors(chain = true)
 @NoArgsConstructor
 public class MerchantBrand implements Serializable {
-
     @AggregateIdentifier
     private Long id;
     private String merchantId;

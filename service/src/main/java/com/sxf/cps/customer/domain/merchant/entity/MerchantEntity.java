@@ -25,8 +25,6 @@ public class MerchantEntity implements Serializable {
     private Timestamp registerDate;
     private Timestamp activeDate;
     private Timestamp callBackTime;
-    private BrandEnum brandId;
-    private String userId;
     private Timestamp created;
     private Timestamp modified;
     private VipVo vipVo;
@@ -112,26 +110,6 @@ public class MerchantEntity implements Serializable {
 
     public void setCallBackTime(Timestamp callBackTime) {
         this.callBackTime = callBackTime;
-    }
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "brand_id")
-    public BrandEnum getBrandId() {
-        return brandId;
-    }
-
-    public void setBrandId(BrandEnum brandId) {
-        this.brandId = brandId;
-    }
-
-    @Basic
-    @Column(name = "user_id")
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
     }
 
     @Basic
