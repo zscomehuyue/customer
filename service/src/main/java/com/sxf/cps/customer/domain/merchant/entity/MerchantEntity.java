@@ -34,8 +34,7 @@ public class MerchantEntity implements Serializable {
     private Timestamp modified;
 
 
-    @OneToMany
-    @JoinColumn(name = "merchant_id", foreignKey = @ForeignKey(NO_CONSTRAINT))
+
     private List<MerchantBrandEntity> merchantBrandEntityList;
 
     @Id
@@ -187,6 +186,16 @@ public class MerchantEntity implements Serializable {
 
     public void setModified(Timestamp modified) {
         this.modified = modified;
+    }
+
+    @OneToMany
+    @JoinColumn(name = "merchant_id", foreignKey = @ForeignKey(NO_CONSTRAINT))
+    public List<MerchantBrandEntity> getMerchantBrandEntityList() {
+        return merchantBrandEntityList;
+    }
+
+    public void setMerchantBrandEntityList(List<MerchantBrandEntity> merchantBrandEntityList) {
+        this.merchantBrandEntityList = merchantBrandEntityList;
     }
 
     @Override
