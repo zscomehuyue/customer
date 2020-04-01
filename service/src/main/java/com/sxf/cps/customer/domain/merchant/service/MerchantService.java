@@ -78,7 +78,7 @@ public class MerchantService {
             Optional<MerchantBrandEntity> brand = brandFun.get();
             brand.ifPresent(bd -> {
                 bd.getMerchantVo().setMerchantCode(event.getMerchantCode());
-                bd.getMerchantVo().setMerchantId(save.getUuid());
+                bd.getMerchantVo().setMerchantId(save.getId());
                 bd.setModified(Timestamp.valueOf(LocalDateTime.now()));
                 merchantRepository.flush();
             });

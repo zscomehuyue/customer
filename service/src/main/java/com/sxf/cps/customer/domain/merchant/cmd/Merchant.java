@@ -37,7 +37,7 @@ import static org.axonframework.modelling.command.AggregateLifecycle.apply;
 @NoArgsConstructor
 public class Merchant implements Serializable {
     @AggregateIdentifier
-    private String uuid;
+    private Long id;
     private String merchantCode;
     private String name;
     private String mobile;
@@ -81,12 +81,12 @@ public class Merchant implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Merchant that = (Merchant) o;
-        return Objects.equals(uuid, that.uuid);
+        return Objects.equals(id, that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(uuid);
+        return Objects.hash(id);
     }
 
 }

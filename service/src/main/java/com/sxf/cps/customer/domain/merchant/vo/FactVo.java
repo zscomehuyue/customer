@@ -1,5 +1,6 @@
 package com.sxf.cps.customer.domain.merchant.vo;
 
+import com.sxf.cps.customer.api.merchant.enumtype.BrandEnum;
 import com.sxf.cps.customer.api.merchant.enumtype.BrandFlagEnum;
 import com.sxf.cps.customer.api.merchant.enumtype.FactStateEnum;
 import com.sxf.cps.customer.api.merchant.enumtype.FactStatusEnum;
@@ -7,10 +8,7 @@ import lombok.Data;
 import lombok.ToString;
 import lombok.experimental.Accessors;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
@@ -23,6 +21,7 @@ import java.sql.Timestamp;
 @ToString
 @Accessors(chain = true)
 public class FactVo implements Serializable {
+    private BrandEnum brandId;
     private String factId;
     private String factSn;
     private FactStatusEnum factStatus;
@@ -101,5 +100,14 @@ public class FactVo implements Serializable {
         this.activeDate = activeDate;
     }
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "brand_id")
+    public BrandEnum getBrandId() {
+        return brandId;
+    }
+
+    public void setBrandId(BrandEnum brandId) {
+        this.brandId = brandId;
+    }
 
 }

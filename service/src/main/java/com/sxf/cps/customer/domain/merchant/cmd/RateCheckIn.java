@@ -14,7 +14,7 @@ import java.util.Objects;
 @Accessors(chain = true)
 @NoArgsConstructor
 public class RateCheckIn implements Serializable {
-    private String uuid;
+    private Long id;
     private String factSn;
     private String factId;
     private String brandId;
@@ -30,11 +30,11 @@ public class RateCheckIn implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RateCheckIn that = (RateCheckIn) o;
-        return Objects.equals(uuid, that.uuid);
+        return Objects.equals(id, that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(uuid);
+        return Objects.hash(id);
     }
 }

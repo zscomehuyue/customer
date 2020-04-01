@@ -8,7 +8,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "rate_check_in_log")
 public class RateCheckInLogEntity implements Serializable {
-    private Long uuid;
+    private Long id;
     private Long merchantBrandId;
     private String factSn;
     private String factId;
@@ -21,13 +21,13 @@ public class RateCheckInLogEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name = "uuid")
-    public Long getUuid() {
-        return uuid;
+    @Column(name = "id")
+    public Long getId() {
+        return id;
     }
 
-    public void setUuid(Long uuid) {
-        this.uuid = uuid;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     @Basic
@@ -125,7 +125,7 @@ public class RateCheckInLogEntity implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RateCheckInLogEntity that = (RateCheckInLogEntity) o;
-        return Objects.equals(uuid, that.uuid) &&
+        return Objects.equals(id, that.id) &&
                 Objects.equals(factSn, that.factSn) &&
                 Objects.equals(factId, that.factId) &&
                 Objects.equals(brandId, that.brandId) &&
@@ -138,6 +138,6 @@ public class RateCheckInLogEntity implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(uuid, factSn, factId, brandId, rateId, rateDesc, checkInUser, created, modified);
+        return Objects.hash(id, factSn, factId, brandId, rateId, rateDesc, checkInUser, created, modified);
     }
 }

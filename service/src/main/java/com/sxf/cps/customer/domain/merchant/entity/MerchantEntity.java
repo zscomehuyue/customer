@@ -2,13 +2,13 @@ package com.sxf.cps.customer.domain.merchant.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sxf.cps.customer.api.merchant.enumtype.BrandEnum;
+import com.sxf.cps.customer.domain.merchant.vo.VipVo;
 import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
-import java.util.Objects;
 
 import static javax.persistence.ConstraintMode.NO_CONSTRAINT;
 
@@ -17,14 +17,11 @@ import static javax.persistence.ConstraintMode.NO_CONSTRAINT;
 @Table(name = "merchant")
 @JsonIgnoreProperties(value={"hibernateLazyInitializer","handler","fieldHandler","merchantCode"})
 public class MerchantEntity implements Serializable {
-    private Long uuid;
-    private String merchantCode;
+    private Long id;
     private String name;
     private String mobile;
+    private String merchantCode;
     private String mobileCipher;
-    private Integer vipType;
-    private Timestamp vipStartDate;
-    private Timestamp vipEndDate;
     private Timestamp registerDate;
     private Timestamp activeDate;
     private Timestamp callBackTime;
@@ -32,17 +29,18 @@ public class MerchantEntity implements Serializable {
     private String userId;
     private Timestamp created;
     private Timestamp modified;
+    private VipVo vipVo;
     private List<MerchantBrandEntity> merchantBrandEntityList;
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name = "uuid")
-    public Long getUuid() {
-        return uuid;
+    @Column(name = "id")
+    public Long getId() {
+        return id;
     }
 
-    public void setUuid(Long uuid) {
-        this.uuid = uuid;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     @Basic
@@ -85,35 +83,6 @@ public class MerchantEntity implements Serializable {
         this.mobileCipher = mobileCipher;
     }
 
-    @Basic
-    @Column(name = "vip_type")
-    public Integer getVipType() {
-        return vipType;
-    }
-
-    public void setVipType(Integer vipType) {
-        this.vipType = vipType;
-    }
-
-    @Basic
-    @Column(name = "vip_start_date")
-    public Timestamp getVipStartDate() {
-        return vipStartDate;
-    }
-
-    public void setVipStartDate(Timestamp vipStartDate) {
-        this.vipStartDate = vipStartDate;
-    }
-
-    @Basic
-    @Column(name = "vip_end_date")
-    public Timestamp getVipEndDate() {
-        return vipEndDate;
-    }
-
-    public void setVipEndDate(Timestamp vipEndDate) {
-        this.vipEndDate = vipEndDate;
-    }
 
     @Basic
     @Column(name = "register_date")
@@ -195,30 +164,14 @@ public class MerchantEntity implements Serializable {
         this.merchantBrandEntityList = merchantBrandEntityList;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        MerchantEntity that = (MerchantEntity) o;
-        return Objects.equals(uuid, that.uuid) &&
-                Objects.equals(merchantCode, that.merchantCode) &&
-                Objects.equals(name, that.name) &&
-                Objects.equals(mobile, that.mobile) &&
-                Objects.equals(mobileCipher, that.mobileCipher) &&
-                Objects.equals(vipType, that.vipType) &&
-                Objects.equals(vipStartDate, that.vipStartDate) &&
-                Objects.equals(vipEndDate, that.vipEndDate) &&
-                Objects.equals(registerDate, that.registerDate) &&
-                Objects.equals(activeDate, that.activeDate) &&
-                Objects.equals(callBackTime, that.callBackTime) &&
-                Objects.equals(brandId, that.brandId) &&
-                Objects.equals(userId, that.userId) &&
-                Objects.equals(created, that.created) &&
-                Objects.equals(modified, that.modified);
+    @Embedded
+    public VipVo getVipVo() {
+        return vipVo;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(uuid, merchantCode, name, mobile, mobileCipher, vipType, vipStartDate, vipEndDate, registerDate, activeDate, callBackTime, brandId, userId, created, modified);
+    public void setVipVo(VipVo vipVo) {
+        this.vipVo = vipVo;
     }
+
+
 }

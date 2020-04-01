@@ -5,7 +5,7 @@ use xlm;
 DROP TABLE IF EXISTS merchant;
 create table merchant
 (
-    uuid  varchar(40) not null primary key comment '主键',
+    id  varchar(40) not null primary key comment '主键',
     merchant_code  varchar(40) comment '商户编号',
     name   varchar(32) comment '商户名称',
     mobile     varchar(32) comment '商户手机号',
@@ -25,7 +25,7 @@ create table merchant
 DROP TABLE IF EXISTS merchant_brand;
 create table merchant_brand
 (
-    uuid  varchar(40) not null  primary key comment '主键',
+    id  varchar(40) not null  primary key comment '主键',
     merchant_id   varchar(40) comment '商户id',
     merchant_code    varchar(40) comment '商户编号',
     brand_id  varchar(32) comment '品牌id',
@@ -47,7 +47,7 @@ create table merchant_brand
 DROP TABLE IF EXISTS rate_check_in;
 create table rate_check_in
 (
-    uuid  varchar(32) not null primary key comment '主键',
+    id  varchar(32) not null primary key comment '主键',
     merchant_brand_id  varchar(32)  comment '商户产品表id',
     fact_sn   varchar(20)  not null comment '机具序列号',
     fact_id   varchar(32)  not null comment '厂商编号',
@@ -63,7 +63,7 @@ create table rate_check_in
 DROP TABLE IF EXISTS rate_check_in_log;
 create table rate_check_in_log
 (
-    uuid  varchar(32)  not null  primary key comment '主键',
+    id  varchar(32)  not null  primary key comment '主键',
     merchant_brand_id  varchar(32)  comment '商户产品表id',
     fact_sn   varchar(20)  not null comment '机具序列号',
     fact_id   varchar(32)  not null comment '厂商编号',
@@ -80,6 +80,6 @@ create table rate_check_in_log
 -- alter table merchant_brand drop foreign key  rate_check_in_out ;
 --
 -- -- 创建merchant时，更新brand的merchantId；
--- alter table merchant_brand add constraint merchant_id_out foreign key(merchant_id) references merchant(uuid);
--- alter table rate_check_in_log add constraint rate_check_in_log_out foreign key(merchant_brand_id) references merchant_brand(uuid);
--- alter table rate_check_in add constraint rate_check_in_out foreign key(merchant_brand_id) references merchant_brand(uuid);
+-- alter table merchant_brand add constraint merchant_id_out foreign key(merchant_id) references merchant(id);
+-- alter table rate_check_in_log add constraint rate_check_in_log_out foreign key(merchant_brand_id) references merchant_brand(id);
+-- alter table rate_check_in add constraint rate_check_in_out foreign key(merchant_brand_id) references merchant_brand(id);

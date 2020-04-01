@@ -1,7 +1,6 @@
 package com.sxf.cps.customer.domain.merchant.entity;
 
 
-import com.sxf.cps.customer.api.merchant.enumtype.BrandEnum;
 import com.sxf.cps.customer.domain.merchant.vo.FactVo;
 import com.sxf.cps.customer.domain.merchant.vo.MerchantVo;
 
@@ -22,11 +21,10 @@ import static javax.persistence.ConstraintMode.NO_CONSTRAINT;
 @Table(name = "merchant_brand")
 public class MerchantBrandEntity implements Serializable {
 
-    private Long uuid;
+    private Long id;
     private String userId;
     private FactVo factVo;
     private MerchantVo merchantVo;
-    private BrandEnum brandId;
     private Timestamp created;
     private Timestamp modified;
     private RateCheckInEntity rateCheckInEntity;
@@ -37,7 +35,7 @@ public class MerchantBrandEntity implements Serializable {
      * MerchantBrandEntity中的uuid，通过rateCheckInEntity的merchant_brand_id进行关联
      */
     @OneToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(nullable = false, name = "uuid", referencedColumnName = "merchant_brand_id", foreignKey = @ForeignKey(NO_CONSTRAINT))
+    @JoinColumn(nullable = false, name = "id", referencedColumnName = "merchant_brand_id", foreignKey = @ForeignKey(NO_CONSTRAINT))
     public RateCheckInEntity getRateCheckInEntity() {
         return rateCheckInEntity;
     }
@@ -58,24 +56,13 @@ public class MerchantBrandEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "uuid")
-    public Long getUuid() {
-        return uuid;
+    @Column(name = "id")
+    public Long getId() {
+        return id;
     }
 
-    public void setUuid(Long uuid) {
-        this.uuid = uuid;
-    }
-
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "brand_id")
-    public BrandEnum getBrandId() {
-        return brandId;
-    }
-
-    public void setBrandId(BrandEnum brandId) {
-        this.brandId = brandId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     @Basic
