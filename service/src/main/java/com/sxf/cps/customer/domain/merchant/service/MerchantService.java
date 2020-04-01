@@ -212,20 +212,18 @@ public class MerchantService {
         brandEntity.getMerchantVo().setMerchantId(merchant.getId());
         brandEntity.getFactVo().setBrandId(BrandEnum.MPOS);
         brandEntity.getFactVo().setBrandFlag(BrandFlagEnum.DEFAULT_VALUE);
-        brandEntity.setId(null);
         System.err.println("=saveAll=>"+brandEntity);
+        brandEntity.setRateCheckInEntity(null);
         merchantBrandRepository.save(brandEntity);
 
         RateCheckInEntity checkInEntity = BeanValueUtils.initValue(RateCheckInEntity.class, id);
         checkInEntity.setMerchantBrandId(brandEntity.getId());
         System.err.println("=saveAll=>"+checkInEntity);
-        brandEntity.setId(null);
         rateCheckInRepository.save(checkInEntity);
 
         RateCheckInLogEntity log = BeanValueUtils.initValue(RateCheckInLogEntity.class, id);
         log.setMerchantBrandId(brandEntity.getId());
         System.err.println("=saveAll=>"+log);
-        log.setId(null);
         rateCheckInLogRepository.save(log);
 
 
