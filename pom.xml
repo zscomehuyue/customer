@@ -91,6 +91,9 @@
                     </dependency>
                 </dependencies>
             </plugin>
+            <!--QueryDSL的插件，该插件会自动扫描项目内配置了@Entity的实体类，-->
+            <!--并根据实体的内定义的字段以及关联类通过JPAAnnotationProcessor自动创建Q[实体类名称]的查询实体，-->
+            <!--创建完成后会将实体存放到我们配置outputDirectory属性目录下。-->
             <plugin>
                 <groupId>com.mysema.maven</groupId>
                 <artifactId>apt-maven-plugin</artifactId>
