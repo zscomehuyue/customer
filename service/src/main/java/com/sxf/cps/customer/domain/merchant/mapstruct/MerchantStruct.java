@@ -64,18 +64,4 @@ public interface MerchantStruct {
     @Mapping(target = "id", ignore = true)
     void updateMerchantBrandEntity(CreateMerchantBrandEvent event, @MappingTarget MerchantBrandEntity entity);
 
-    static void main(String[] args) {
-        MerchantStruct mapper = Mappers.getMapper(MerchantStruct.class);
-        CreateMerchantEvent event = new CreateMerchantEvent();
-        MerchantEntity entity = new MerchantEntity();
-//        entity.setId("1");
-        entity.setName("event");
-
-        event.setName("event_name");
-//        event.setId("event");
-        System.out.println(entity);
-        mapper.updateMerchantEntity(event, entity);
-        System.out.println(entity);
-
-    }
 }
