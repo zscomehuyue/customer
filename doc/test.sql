@@ -117,3 +117,4 @@ alter table merchant_brand
 
 alter table rate_check_in_log
     add constraint FKpeurc8bxgixbnrn8saa9scv9r foreign key (merchant_brand_id) references merchant_brand;
+

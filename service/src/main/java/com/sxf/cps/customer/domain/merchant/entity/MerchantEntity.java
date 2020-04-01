@@ -36,7 +36,7 @@ public class MerchantEntity implements Serializable {
 
     @Id
     @GeneratedValue(generator = "jpa-uuid")
-    @Column(name = "id",length = 32)
+    @Column(name = "id", length = 32)
     public String getId() {
         return id;
     }
@@ -136,7 +136,7 @@ public class MerchantEntity implements Serializable {
         this.modified = modified;
     }
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(insertable = false, updatable = false, name = "merchant_id", foreignKey = @ForeignKey(NO_CONSTRAINT))
     public List<MerchantBrandEntity> getMerchantBrandEntityList() {
         return merchantBrandEntityList;
