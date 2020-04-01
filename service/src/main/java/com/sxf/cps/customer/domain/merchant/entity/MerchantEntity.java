@@ -32,9 +32,6 @@ public class MerchantEntity implements Serializable {
     private String userId;
     private Timestamp created;
     private Timestamp modified;
-
-
-
     private List<MerchantBrandEntity> merchantBrandEntityList;
 
     @Id
