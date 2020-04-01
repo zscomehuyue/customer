@@ -1,7 +1,6 @@
 package com.sxf.cps.customer.domain.merchant.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.sxf.cps.customer.api.merchant.enumtype.BrandEnum;
 import com.sxf.cps.customer.domain.merchant.vo.VipVo;
 import lombok.ToString;
 
