@@ -23,12 +23,10 @@ import static javax.persistence.ConstraintMode.NO_CONSTRAINT;
 public class MerchantBrandEntity implements Serializable {
 
     private Long uuid;
-
-    //FIXME 没有自动生成merchantId，这个自己的不需要吗？
-    private MerchantVo merchantVo;
-    private BrandEnum brandId;
     private String userId;
     private FactVo factVo;
+    private MerchantVo merchantVo;
+    private BrandEnum brandId;
     private Timestamp created;
     private Timestamp modified;
     private RateCheckInEntity rateCheckInEntity;
