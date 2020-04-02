@@ -26,6 +26,11 @@ public class MerchantEntity implements Serializable {
     private String mobile;
     private String merchantCode;
     private String mobileCipher;
+
+    /**
+     * 商户归属
+     */
+    private String userId;
     private Timestamp registerDate;
     private Timestamp activeDate;
     private Timestamp callBackTime;
@@ -155,5 +160,13 @@ public class MerchantEntity implements Serializable {
         this.vipVo = vipVo;
     }
 
+    @Basic
+    @Column(name = "user_id")
+    public String getUserId() {
+        return userId;
+    }
 
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 }
