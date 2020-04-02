@@ -8,10 +8,11 @@
 
 ## 2、问题：
 * `自动更新执行，语句如下：`
-    Hibernate: update token_entry set timestamp=? where processor_name=?
-    and segment=? and owner=?
+
+  * Hibernate: update token_entry set timestamp=? where processor_name=?
+  and segment=? and owner=?
 * `idea 直接执行main方法，感觉没有编译导致，找不到些包，其实是对的；`
-    *  不知如何，就好了，file->清理缓存
+  * 不知如何，就好了，file->清理缓存
 * `SQLSyntaxErrorException: Specified key was too long; max key length
   is 1000 bytes`
 * `启动测试用例时，提示MerchantService 加载不到；`
