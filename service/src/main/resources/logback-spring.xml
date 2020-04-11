@@ -21,13 +21,14 @@
     <springProfile name="dev">
         <logger name="com.sxf" level="INFO"/>
         <logger name="com.jarvis" level="INFO"/>
+        <logger name="org.axonframework" level="INFO"/>
         <root level="INFO">
             <appender-ref ref="CONSOLE"/>
             <appender-ref ref="FILE"/>
         </root>
     </springProfile>
 
-    <springProfile name="test">
+    <springProfile name="mysql">
         <logger name="org.springframework" level="WARN"/>
         <logger name="com.sxf" level="INFO"/>
         <logger name="com.jarvis" level="INFO"/>

@@ -5,7 +5,7 @@ spring:
   application:
     name: customer
   profiles:
-    active: ${profile:mysql}
+    active: ${profile:dev}
   aop:
     auto: true
     proxy-target-class: true
@@ -16,7 +16,7 @@ spring:
 #axon server config AxonServerConfiguration
 axon:
   axonserver:
-    servers: localhost:8124,localhost:8124
+    servers: 192.168.1.5:8124
     initial-nr-of-permits: 5000 # default 5000 hreads
     command-threads: 10 # default 10 threads
     query-threads: 10 # default 10 threads

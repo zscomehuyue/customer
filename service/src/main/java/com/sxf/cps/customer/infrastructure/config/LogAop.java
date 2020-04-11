@@ -8,13 +8,18 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Service;
 
+import static com.sxf.cps.customer.infrastructure.util.LogUtils.error;
+import static com.sxf.cps.customer.infrastructure.util.LogUtils.info;
+
 
 @Aspect
 @Service
 @Slf4j
 public class LogAop {
 
-    @Pointcut("execution(public * com.sxf.cps.customer.domain.merchant.service..*.*(..)))")
+    @Pointcut("execution(public * com.sxf.cps.customer.domain.merchant.service..*.*(..)) || " +
+            "execution(public * com.sxf.cps.customer.domain..*.*(..)) || " +
+            "execution(public * com.sxf.cps.customer.resources.façade..*.*(..))) ")
     public void pointcut() {
     }
 
@@ -23,12 +28,12 @@ public class LogAop {
         MethodSignature methodSignature = (MethodSignature) pj.getSignature();
         String name = pj.getTarget().getClass().getSimpleName();
         String methtLogName = name + "." + methodSignature.getMethod().getName();
-        log.info("=" + methtLogName + "=>");
+        info(()->"=" + methtLogName + "=>");
         try {
             return pj.proceed();
         } catch (Throwable e) {
             e.printStackTrace();
-            log.error("=around=>" + methtLogName + " ,errors:", e);
+            error(()->"="+methtLogName+"=>errors:", e);
             throw e;
         }
     }
