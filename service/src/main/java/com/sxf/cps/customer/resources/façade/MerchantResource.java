@@ -53,12 +53,24 @@ public class MerchantResource implements MerchantApi {
     }
 
     @Override
+    public void addMerchant(@RequestBody @Valid CreateMerchantForm form) {
+        form.setRegisterDate(Timestamp.valueOf(LocalDateTime.now()))
+                .setId(UuidUtils.creatUuid());
+        merchantService.createMerchant(form);
+    }
+
+    @Override
     public void registerMerchantBrand(@RequestBody @Valid CreateMerchantBrandForm form) {
         form.setId(UuidUtils.creatUuid());
         info(() -> "=registerMerchantBrand=>form:%s", form);
         CreateMerchantBrandCmd cmd = merchantAssembler.toMerchantBrandCmd(form);
         info(() -> "=registerMerchantBrand=>cmd:%s", cmd);
         publish.sendAndWait(cmd);
+    }
+
+    @Override
+    public void addMerchantBrand(@RequestBody @Valid CreateMerchantBrandForm form) {
+        merchantService.registerMerchantBrand(form);
     }
 
 

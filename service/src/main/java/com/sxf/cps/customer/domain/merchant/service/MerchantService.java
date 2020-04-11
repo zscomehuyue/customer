@@ -3,6 +3,8 @@ package com.sxf.cps.customer.domain.merchant.service;
 import com.sxf.cps.customer.api.merchant.dto.MerchantDto;
 import com.sxf.cps.customer.api.merchant.enumtype.BrandEnum;
 import com.sxf.cps.customer.api.merchant.enumtype.BrandFlagEnum;
+import com.sxf.cps.customer.api.merchant.form.CreateMerchantBrandForm;
+import com.sxf.cps.customer.api.merchant.form.CreateMerchantForm;
 import com.sxf.cps.customer.api.merchant.form.MerchantForm;
 import com.sxf.cps.customer.domain.merchant.entity.MerchantBrandEntity;
 import com.sxf.cps.customer.domain.merchant.entity.MerchantEntity;
@@ -57,13 +59,13 @@ public class MerchantService {
     @Resource
     private RateCheckInRepository rateCheckInRepository;
 
-//    public void createMerchant(CreateMerchantForm form) {
-//        mergeMerchantEntity(merchantAssembler.toMerchantEvent(form));
-//    }
-//
-//    public void registerMerchantBrand(CreateMerchantBrandForm form) {
-//        mergeMerchantBrand(merchantAssembler.toMerchantBrandEvent(form));
-//    }
+    public void createMerchant(CreateMerchantForm form) {
+        mergeMerchantEntity(merchantAssembler.toMerchantEvent(form));
+    }
+
+    public void registerMerchantBrand(CreateMerchantBrandForm form) {
+        mergeMerchantBrand(merchantAssembler.toMerchantBrandEvent(form));
+    }
 
     @EventHandler
     @DefaultTransaction
