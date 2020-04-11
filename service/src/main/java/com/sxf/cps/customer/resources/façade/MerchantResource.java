@@ -49,7 +49,7 @@ public class MerchantResource implements MerchantApi {
         info(() -> "=createMerchant=>form:%s", form);
         CreateMerchantCmd cmd = merchantAssembler.toMerchantCmd(form);
         info(() -> "=createMerchant=>cmd:%s", cmd);
-        publish.sendAndWait(cmd);
+        publish.send(cmd);
     }
 
     @Override

@@ -16,7 +16,13 @@ public interface MerchantApi {
     Page<MerchantDto> getMerchantPage(@RequestBody @Valid MerchantForm form);
 
     /**
-     * 命令方式，FIXME 优点在哪里？
+     *
+     * FIXME 命令方式， 优点在哪里？
+     * FIXME 使用springboot实现cqrs更容易 ,非业务性的功能，几乎都不需要实现了；
+     * FIXME cqrs 不是特像，把消息发送到队列，然后有消费者，消费吗；spring-boot spring-cloud已经很成熟，根本没有必要使用axon框架；
+     * FIXME 从学成成本来说，也没有必要；使用范围小；并且公司切换成这个框架的可能性，更小，根本不是主流；
+     * FIXME 该框架的服务治理，也不完善；思想可以借鉴；
+     *
      * 命令流程（前台）：
      * 1. 前台发送请求到网关
      * 2. 网关负载均衡到customer服务；
