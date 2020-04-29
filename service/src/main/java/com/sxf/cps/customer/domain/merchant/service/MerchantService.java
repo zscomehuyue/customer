@@ -122,9 +122,7 @@ public class MerchantService {
         Example<MerchantEntity> example = Example.of(merchantAssembler.toMerchantEntity(form), matcher);
 
         //FIXME Page 提供一个map方法很好，轻松解决映射问题；并且直接返回接需要的结果；有点中间拦截器的感觉，完美；
-        Page<MerchantEntity> all = merchantRepository.findAll(example, PageRequest.of(form.getPage(), form.getSize()));
-        return all
-                .map(merchantAssembler::toMerchantDto);
+        return merchantRepository.findAll(example, PageRequest.of(form.getPage(), form.getSize())).map(merchantAssembler::toMerchantDto);
     }
 
 
