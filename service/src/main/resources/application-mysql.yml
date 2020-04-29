@@ -4,13 +4,13 @@ spring:
     url: jdbc:mysql://localhost:3306/customer
     password: root
     username: root
-  jpa:
-    database-platform: org.hibernate.dialect.MySQL5Dialect
-    generate-ddl: false
-    show-sql: true
-    open-in-view: true
-    hibernate:
-      ddl-auto: none #update 自动更新表结构 ,none 不更新表结构
+#  jpa:
+#    database-platform: org.hibernate.dialect.MySQL5Dialect
+#    generate-ddl: false
+#    show-sql: true
+#    open-in-view: true
+#    hibernate:
+#      ddl-auto: none #update 自动更新表结构 ,none 不更新表结构
 
 
 

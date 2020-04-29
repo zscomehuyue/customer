@@ -12,11 +12,19 @@ spring:
 
   main:
     allow-bean-definition-overriding: true # false bug the bean 'merchantRepository' could not be registered. A bean with that name has already been defined and overriding is disabled.
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+    generate-ddl: false
+    show-sql: false
+    open-in-view: true
+    hibernate:
+      ddl-auto: none #update 自动更新表结构 ,none 不更新表结构
+
 
 #axon server config AxonServerConfiguration
 axon:
   axonserver:
-    servers: 192.168.1.5:8124
+    servers: localhost:8124
     initial-nr-of-permits: 5000 # default 5000 hreads
     command-threads: 10 # default 10 threads
     query-threads: 10 # default 10 threads

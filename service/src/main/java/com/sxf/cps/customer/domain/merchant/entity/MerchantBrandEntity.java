@@ -3,6 +3,8 @@ package com.sxf.cps.customer.domain.merchant.entity;
 
 import com.sxf.cps.customer.domain.merchant.vo.FactVo;
 import com.sxf.cps.customer.domain.merchant.vo.MerchantVo;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -10,6 +12,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Objects;
 
 import static javax.persistence.ConstraintMode.NO_CONSTRAINT;
 
@@ -21,6 +24,7 @@ import static javax.persistence.ConstraintMode.NO_CONSTRAINT;
  * FIXME 实体是否，不配置任何关联对象，岂不是根简单？？，但是查询是需要的；
  */
 @ToString
+@Data
 @Entity
 @Table(name = "merchant_brand")
 //NamedEntityGraph and EntityGraph 解决n+1
